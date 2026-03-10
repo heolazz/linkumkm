@@ -26,7 +26,12 @@ const Navbar: React.FC<NavbarProps> = ({ activeTab, onNavigate }) => {
       <nav className="h-20 bg-white border-b border-gray-100 flex items-center relative z-[1001] shadow-sm">
         <div className="max-w-[1440px] mx-auto px-5 flex justify-between items-center w-full">
           <div className="flex items-center">
-            <img src="/logo/logo-linkumkm.png" alt="LinkUMKM Logo" className="h-10 w-auto object-contain" />
+            <img
+              src="/logo/logo-linkumkm.png"
+              alt="LinkUMKM Logo"
+              className="h-10 w-auto object-contain cursor-pointer active:scale-95 transition-transform"
+              onClick={() => onNavigate('Beranda')}
+            />
           </div>
 
           <ul className="hidden lg:flex list-none gap-8 h-full items-center">
