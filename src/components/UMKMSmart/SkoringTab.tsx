@@ -41,6 +41,17 @@ const SkoringTab = ({ onNavigate }: { onNavigate?: (tab: string) => void }) => {
         return null;
     };
 
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    React.useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <div className="w-full">
             {/* Header / Meta Info */}
@@ -71,12 +82,12 @@ const SkoringTab = ({ onNavigate }: { onNavigate?: (tab: string) => void }) => {
                             </div>
                         </div>
 
-                        <div className="w-full h-[500px] md:h-[600px] -ml-8 md:-ml-16">
+                        <div className={`w-full h-[500px] md:h-[600px] ${isMobile ? '-ml-8' : ''}`}>
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart
                                     layout="vertical"
                                     data={dataBarChart}
-                                    margin={{ top: 0, right: 15, left: -20, bottom: 0 }}
+                                    margin={{ top: 0, right: 30, left: isMobile ? -20 : 20, bottom: 0 }}
                                     barSize={12}
                                 >
                                     <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#E5E7EB" />
@@ -86,8 +97,8 @@ const SkoringTab = ({ onNavigate }: { onNavigate?: (tab: string) => void }) => {
                                         dataKey="subject"
                                         axisLine={false}
                                         tickLine={false}
-                                        tick={{ fontSize: 10, fill: '#aaaeb4ff', width: 120, dx: -5 }}
-                                        width={130}
+                                        tick={{ fontSize: isMobile ? 10 : 11, fill: '#94a3b8', width: isMobile ? 110 : 170 }}
+                                        width={isMobile ? 120 : 180}
                                     />
                                     <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
                                     <Bar dataKey="A" fill="#0070c0" radius={[0, 4, 4, 0]}>
