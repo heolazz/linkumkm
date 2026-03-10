@@ -82,7 +82,7 @@ const App: React.FC = () => {
           </div>
         )}
       </main>
-      <Footer />
+      <Footer onNavigate={setActiveTab} />
     </div>
   );
 }
