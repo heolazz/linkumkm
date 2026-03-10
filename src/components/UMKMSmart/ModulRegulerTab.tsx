@@ -407,7 +407,7 @@ const ModulRegulerTab = ({ onModuleSelect }: { onModuleSelect?: (module: any) =>
             ) : (
                 <div className="pt-2">
                     <div className="mb-10 text-center max-w-2xl mx-auto">
-                        <h2 className="text-2xl font-black  text-[#1c2127] mb-3 uppercase tracking-tight">Perjalanan Belajar Anda</h2>
+                        <h2 className="text-2xl font-black  text-[#1c2127] mb-3 tracking-tight">Perjalanan Belajar Anda</h2>
                         <p className="text-md text-gray-500">Ikuti urutan materi yang sudah kami susun untuk membantu UMKM Anda naik kelas selangkah demi selangkah.</p>
                     </div>
                     <ModuleJourneyPath levels={accordionData} onModuleSelect={onModuleSelect} />
