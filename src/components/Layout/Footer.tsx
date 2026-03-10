@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+    onNavigate: (tab: string) => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
     return (
         <footer className="bg-white pt-20 pb-10 border-t border-gray-100">
             <div className="max-w-[1440px] mx-auto px-5">
@@ -8,7 +12,12 @@ const Footer: React.FC = () => {
                     {/* Brand Section */}
                     <div className="xl:w-[320px] shrink-0">
                         <div className="mb-6">
-                            <img src="/logo/logo-linkumkm.png" alt="LinkUMKM Logo" className="h-10 w-auto object-contain" />
+                            <img
+                                src="/logo/logo-linkumkm.png"
+                                alt="LinkUMKM Logo"
+                                className="h-10 w-auto object-contain cursor-pointer transition-transform active:scale-95"
+                                onClick={() => onNavigate('Beranda')}
+                            />
                         </div>
                         <p className="text-[14px] text-[#55677B] mb-8 leading-[1.6] font-medium max-w-[280px]">
                             Tingkatkan keahlianmu dengan berbagai modul pelatihan UMKM, konsultasi dengan pakar, dan pahami kategori potensi bisnismu melalui penilaian skoring assesment naik kelas.
