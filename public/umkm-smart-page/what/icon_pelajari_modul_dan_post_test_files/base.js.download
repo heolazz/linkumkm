@@ -1,0 +1,30 @@
+$('.box-search').hide();
+$('.srch_chat_input').hide();
+$(document).ready(function () {
+	$('.show-search').on('click', function (event) {
+		event.preventDefault();
+		$(this).next('.show-search').fadeToggle(200);
+		$(this).find('i').toggleClass('fa-search fa-close');
+		$('.box-search').fadeToggle('fast');
+		$('#cd-lateral-nav').removeClass('lateral-menu-is-open');
+		$('#cd-menu-trigger').removeClass('is-clicked');
+	});
+	$('.srch_chat').on('click', function (event) {
+		event.preventDefault();
+		$(this).next('.srch_chat_input').fadeIn(200);
+	});
+	$('.srch_close').on('click', function (event) {
+		event.preventDefault();
+		$('.srch_chat_input').fadeOut(200);
+	});
+$('.buka-popup').magnificPopup({
+  closeBtnInside:true,
+  removalDelay: 500,
+    callbacks: {
+    beforeOpen: function() {
+       this.st.mainClass = this.st.el.attr('data-effect');
+    }
+  },
+  midClick: true
+});
+});

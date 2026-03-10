@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "bri_digital_displaybold";
+  src: url("bridigitaldisplay-bold-webfont.woff2") format("woff2"), url("bridigitaldisplay-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_displayheavy";
+  src: url("bridigitaldisplay-heavy-webfont.woff2") format("woff2"), url("bridigitaldisplay-heavy-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_displaylight";
+  src: url("bridigitaldisplay-light-webfont.woff2") format("woff2"), url("bridigitaldisplay-light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_displaymedium";
+  src: url("bridigitaldisplay-medium-webfont.woff2") format("woff2"), url("bridigitaldisplay-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_displayregular";
+  src: url("bridigitaldisplay-regular-webfont.woff2") format("woff2"), url("bridigitaldisplay-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_displaysemibold";
+  src: url("bridigitaldisplay-semibold-webfont.woff2") format("woff2"), url("bridigitaldisplay-semibold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_textbold";
+  src: url("bridigitaltext-bold-webfont.woff2") format("woff2"), url("bridigitaltext-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_textheavy";
+  src: url("bridigitaltext-heavy-webfont.woff2") format("woff2"), url("bridigitaltext-heavy-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_textlight";
+  src: url("bridigitaltext-light-webfont.woff2") format("woff2"), url("bridigitaltext-light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_textmedium";
+  src: url("bridigitaltext-medium-webfont.woff2") format("woff2"), url("bridigitaltext-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_textregular";
+  src: url("bridigitaltext-regular-webfont.woff2") format("woff2"), url("bridigitaltext-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "bri_digital_textsemibold";
+  src: url("bridigitaltext-semibold-webfont.woff2") format("woff2"), url("bridigitaltext-semibold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
