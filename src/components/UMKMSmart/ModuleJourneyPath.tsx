@@ -403,11 +403,20 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
                     </div>
                 ))}
 
-                {/* Final Goal (Clean) */}
-                <div className="z-20 my-20">
-                    <div className="relative p-12 bg-[#1c2127] rounded-[3.5rem] shadow-xl flex flex-col items-center border-[6px] border-white/5 transition-transform hover:scale-105">
-                        <h3 className="text-white text-[28px] font-black uppercase tracking-tight text-center leading-[0.9]">MENJADI <br /><span className="text-[#ff7a00]">UMKM MODERN</span></h3>
-                        <p className="text-gray-500 text-[11px] font-bold uppercase tracking-[0.4em] mt-5 opacity-50">TUJUAN UTAMA</p>
+                {/* Final Goal (Branded Style) */}
+                <div className="z-20 my-24 group">
+                    <div className="relative p-12 bg-gradient-to-br from-[#0070c0] to-[#005fa3] rounded-[3.5rem] shadow-[0_20px_50px_rgba(0,112,192,0.3)] flex flex-col items-center border-[8px] border-white/20 transition-all duration-500 hover:scale-105 hover:shadow-[0_30px_60px_rgba(0,112,192,0.4)] overflow-hidden">
+                        {/* Shine Effect */}
+                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full duration-1000 transition-transform"></div>
+
+                        <h3 className="text-white text-[32px] font-black uppercase tracking-tight text-center leading-[0.9] relative z-10">
+                            MENJADI <br />
+                            <span className="text-[#ff7a00] drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]">UMKM MODERN</span>
+                        </h3>
+                        <div className="mt-6 flex flex-col items-center relative z-10">
+                            <div className="w-12 h-1 bg-white/30 rounded-full mb-4"></div>
+                            <p className="text-white/60 text-[11px] font-bold uppercase tracking-[0.5em] text-center">Tujuan Utama Perjalanan</p>
+                        </div>
                     </div>
                 </div>
             </div>
