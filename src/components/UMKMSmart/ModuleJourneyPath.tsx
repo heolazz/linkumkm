@@ -13,6 +13,7 @@ interface Module {
     sector?: string[];
     specialTrack?: string;
     duration?: string;
+    completed?: boolean;
 }
 
 interface LevelData {
@@ -93,7 +94,8 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
                     type: isPdfType ? 'Modul PDF' : 'Video Pelatihan',
                     duration: mod.lessons > 0 ? `${mod.lessons * 8 + 10}m` : "15m",
                     sector: globalIndex % 3 === 0 ? ["Kuliner", "Jasa"] : (globalIndex % 3 === 1 ? ["Fashion"] : ["Kriya", "Pertanian"]),
-                    specialTrack: globalIndex % 4 === 1 ? "Link-Global" : (globalIndex % 4 === 3 ? "Link-Permodalan" : (globalIndex % 4 === 2 ? "Link-Legalitas" : (globalIndex % 5 === 0 ? "Link-Pemasaran" : null)))
+                    specialTrack: globalIndex % 4 === 1 ? "Link-Global" : (globalIndex % 4 === 3 ? "Link-Permodalan" : (globalIndex % 4 === 2 ? "Link-Legalitas" : (globalIndex % 5 === 0 ? "Link-Pemasaran" : null))),
+                    completed: globalIndex < 4 // Dummy: mark first 4 modules as read
                 };
             })
         }));
@@ -112,6 +114,16 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
         }).filter(level => level.modules.length > 0 || level.locked);
     }, [enrichedLevels, activeFilter, selectedMission, userData.sector, userData.weaknesses]);
 
+    // --- Detail Module Data ---
+    const selectedModuleData = useMemo(() => {
+        if (!selectedModuleId) return null;
+        for (const level of filteredLevels) {
+            const found = level.modules.find(m => m.id === selectedModuleId);
+            if (found) return found;
+        }
+        return null;
+    }, [selectedModuleId, filteredLevels]);
+
     return (
         <div className="flex flex-col items-center py-4 relative w-full overflow-hidden min-h-screen bg-white">
 
@@ -120,66 +132,63 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
                 <div className="bg-white border border-gray-100 rounded-xl p-1.5 flex flex-wrap md:flex-nowrap gap-1 shadow-sm relative">
 
                     {/* Track 1: Focus */}
-                    <div className="flex-1 relative">
+                    <div className="flex-1 relative min-w-[140px]">
                         <button
                             onClick={() => setActiveFilter('focus')}
-                            className={`w-full p-5 rounded-lg transition-all text-left flex flex-col justify-between h-[135px] relative overflow-hidden ${activeFilter === 'focus' ? 'bg-[#0070c0] text-white shadow-md' : 'bg-[#fdfdfd] border border-gray-50 hover:bg-gray-50'}`}
+                            className={`w-full p-4 md:p-5 rounded-lg transition-all text-left flex flex-col justify-between h-[110px] md:h-[135px] relative overflow-hidden ${activeFilter === 'focus' ? 'bg-[#0070c0] text-white shadow-md' : 'bg-[#fdfdfd] border border-gray-50 hover:bg-gray-50'}`}
                         >
                             <div className="flex justify-between items-start">
-                                <span className={`text-[11px] font-bold uppercase tracking-widest ${activeFilter === 'focus' ? 'text-white/80' : 'text-[#0070c0]'}`}>01. Fokus Personal</span>
-                                <svg className={`w-5 h-5 ${activeFilter === 'focus' ? 'text-white/40' : 'text-gray-200'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <span className={`text-[9px] md:text-[11px] font-bold uppercase tracking-widest ${activeFilter === 'focus' ? 'text-white/80' : 'text-[#0070c0]'}`}>Fokus Personal</span>
                             </div>
                             <div>
-                                <h4 className={`text-[17px] font-bold leading-tight ${activeFilter === 'focus' ? 'text-white' : 'text-[#333]'}`}>Perbaiki Kelemahan</h4>
-                                <p className={`text-[12px] font-medium leading-relaxed mt-1 ${activeFilter === 'focus' ? 'text-white/70' : 'text-gray-400'}`}>
-                                    Berdasarkan skormu: <span className={activeFilter === 'focus' ? 'text-white underline' : 'text-[#0070c0] underline'}>{userData.weaknesses.join(' & ')}</span>
+                                <h4 className={`text-[14px] md:text-[17px] font-bold leading-tight ${activeFilter === 'focus' ? 'text-white' : 'text-[#333]'}`}>Tingkatkan Kompetensi</h4>
+                                <p className={`text-[10px] md:text-[12px] font-medium leading-relaxed mt-0.5 md:mt-1 ${activeFilter === 'focus' ? 'text-white/70' : 'text-gray-400'} line-clamp-1`}>
+                                    Ayo perbaiki aspek {userData.weaknesses.join(' & ')}
                                 </p>
                             </div>
                         </button>
-                        {activeFilter === 'focus' && <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#0070c0] rotate-45 z-10"></div>}
+                        {activeFilter === 'focus' && <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#0070c0] rotate-45 z-10 hidden md:block"></div>}
                     </div>
 
                     {/* Track 2: Sector */}
-                    <div className="flex-1 relative">
+                    <div className="flex-1 relative min-w-[140px]">
                         <button
                             onClick={() => setActiveFilter('sector')}
-                            className={`w-full p-5 rounded-lg transition-all text-left flex flex-col justify-between h-[135px] relative overflow-hidden ${activeFilter === 'sector' ? 'bg-[#0070c0] text-white shadow-md' : 'bg-[#fdfdfd] border border-gray-50 hover:bg-gray-50'}`}
+                            className={`w-full p-4 md:p-5 rounded-lg transition-all text-left flex flex-col justify-between h-[110px] md:h-[135px] relative overflow-hidden ${activeFilter === 'sector' ? 'bg-[#0070c0] text-white shadow-md' : 'bg-[#fdfdfd] border border-gray-50 hover:bg-gray-50'}`}
                         >
                             <div className="flex justify-between items-start">
-                                <span className={`text-[11px] font-bold uppercase tracking-widest ${activeFilter === 'sector' ? 'text-white/80' : 'text-[#0070c0]'}`}>02. Relevansi Sektor</span>
-                                <svg className={`w-5 h-5 ${activeFilter === 'sector' ? 'text-white/40' : 'text-gray-200'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                                <span className={`text-[9px] md:text-[11px] font-bold uppercase tracking-widest ${activeFilter === 'sector' ? 'text-white/80' : 'text-[#0070c0]'}`}>Relevansi Sektor</span>
                             </div>
                             <div>
-                                <h4 className={`text-[17px] font-bold leading-tight ${activeFilter === 'sector' ? 'text-white' : 'text-[#333]'}`}>Sektor {userData.sector}</h4>
-                                <p className={`text-[12px] font-medium leading-relaxed mt-1 ${activeFilter === 'sector' ? 'text-white/70' : 'text-gray-400'}`}>
-                                    Khusus usaha bidang <span className={activeFilter === 'sector' ? 'text-white underline' : 'text-[#0070c0] underline font-bold'}>{userData.sector}</span>.
+                                <h4 className={`text-[14px] md:text-[17px] font-bold leading-tight ${activeFilter === 'sector' ? 'text-white' : 'text-[#333]'}`}>Kuasai {userData.sector}</h4>
+                                <p className={`text-[10px] md:text-[12px] font-medium leading-relaxed mt-0.5 md:mt-1 ${activeFilter === 'sector' ? 'text-white/70' : 'text-gray-400'} line-clamp-1`}>
+                                    Pelajari ilmu spesifik di bidang ini.
                                 </p>
                             </div>
                         </button>
-                        {activeFilter === 'sector' && <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#0070c0] rotate-45 z-10"></div>}
+                        {activeFilter === 'sector' && <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#0070c0] rotate-45 z-10 hidden md:block"></div>}
                     </div>
 
                     {/* Track 3: Special Track */}
-                    <div className="flex-1 relative">
+                    <div className="flex-1 relative min-w-[140px]">
                         <button
                             onClick={() => {
                                 setActiveFilter('special');
                                 if (!selectedMission) setSelectedMission(MISSIONS[0].id);
                             }}
-                            className={`w-full p-5 rounded-lg transition-all text-left flex flex-col justify-between h-[135px] relative overflow-hidden ${activeFilter === 'special' ? 'bg-[#0070c0] text-white shadow-md' : 'bg-[#fdfdfd] border border-gray-50 hover:bg-gray-50'}`}
+                            className={`w-full p-4 md:p-5 rounded-lg transition-all text-left flex flex-col justify-between h-[110px] md:h-[135px] relative overflow-hidden ${activeFilter === 'special' ? 'bg-[#0070c0] text-white shadow-md' : 'bg-[#fdfdfd] border border-gray-50 hover:bg-gray-50'}`}
                         >
                             <div className="flex justify-between items-start">
-                                <span className={`text-[11px] font-bold uppercase tracking-widest ${activeFilter === 'special' ? 'text-white/80' : 'text-[#0070c0]'}`}>03. Misi Strategis</span>
-                                <svg className={`w-5 h-5 ${activeFilter === 'special' ? 'text-white/40' : 'text-gray-200'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-7l.5.5" /></svg>
+                                <span className={`text-[9px] md:text-[11px] font-bold uppercase tracking-widest ${activeFilter === 'special' ? 'text-white/80' : 'text-[#0070c0]'}`}>Misi Strategis</span>
                             </div>
                             <div>
-                                <h4 className={`text-[17px] font-bold leading-tight ${activeFilter === 'special' ? 'text-white' : 'text-[#333]'}`}>{selectedMission || 'Akselerasi Bisnis'}</h4>
-                                <p className={`text-[12px] font-medium leading-relaxed mt-1 ${activeFilter === 'special' ? 'text-white/70' : 'text-gray-400'}`}>
-                                    Tujuan percepatan naik kelas.
+                                <h4 className={`text-[14px] md:text-[17px] font-bold leading-tight ${activeFilter === 'special' ? 'text-white' : 'text-[#333]'}`}>{selectedMission?.split('-')[1] || 'Akselerasi'}</h4>
+                                <p className={`text-[10px] md:text-[12px] font-medium leading-relaxed mt-0.5 md:mt-1 ${activeFilter === 'special' ? 'text-white/70' : 'text-gray-400'} line-clamp-1`}>
+                                    Tujuan naik kelas terukur.
                                 </p>
                             </div>
                         </button>
-                        {activeFilter === 'special' && <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#0070c0] rotate-45 z-10"></div>}
+                        {activeFilter === 'special' && <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#0070c0] rotate-45 z-10 hidden md:block"></div>}
                     </div>
 
                 </div>
@@ -211,12 +220,12 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
             </div>
 
             {/* Selection Summary Overlay (The "Mapping" Anchor) - Fixed Spacing */}
-            <div className="z-50 sticky top-[160px] mb-10 bg-white/80 backdrop-blur-md px-6 py-2.5 rounded-full border border-gray-100 shadow-sm flex items-center justify-between min-w-[300px] md:min-w-[450px] animate-fade-in">
+            <div className={`z-[100] sticky top-[120px] md:top-[160px] mb-10 bg-white/90 backdrop-blur-md px-5 md:px-6 py-2 rounded-full border border-gray-100 shadow-lg flex items-center justify-between min-w-[280px] md:min-w-[450px] animate-fade-in transition-all ${selectedModuleId ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                 <div className="flex items-center gap-3">
                     <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Jalur Aktif:</span>
                     <div className="flex items-center gap-2">
                         <span className="text-[12px] font-bold text-[#0070c0]">
-                            {activeFilter === 'focus' ? '01. Fokus Personal' : (activeFilter === 'sector' ? '02. Relevansi Sektor' : '03. Misi Strategis')}
+                            {activeFilter === 'focus' ? 'Fokus Personal' : (activeFilter === 'sector' ? 'Relevansi Sektor' : 'Misi Strategis')}
                         </span>
                         <span className="text-gray-300">/</span>
                         <span className="text-[12px] font-bold text-gray-600">
@@ -290,26 +299,28 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
 
             {/* Main Journey Path Rendering */}
             <div className="relative w-full flex flex-col items-center">
-                {/* BACKDROP for Closing Detail (Mobile-Friendly Close) */}
+                {/* BACKDROP for Closing Detail (Responsive) */}
                 {selectedModuleId && (
                     <div
-                        className="fixed inset-0 z-[65] cursor-default bg-black/5"
+                        className="fixed inset-0 z-[110] md:z-[65] cursor-default bg-black/60 md:bg-black/5 backdrop-blur-sm md:backdrop-blur-none animate-fade-in"
                         onClick={() => setSelectedModuleId(null)}
                     ></div>
                 )}
                 <div className="absolute top-0 bottom-0 w-[2px] bg-gray-100 rounded-full left-1/2 -translate-x-1/2 z-0"></div>
+                {/* Orange Progress Line (Dummy: 35% height for demo) */}
+                <div className="absolute top-0 w-[2px] bg-[#ff7a00] shadow-[0_0_10px_rgba(255,122,0,0.3)] rounded-full left-1/2 -translate-x-1/2 z-0 transition-all duration-1000" style={{ height: '35%' }}></div>
 
                 {filteredLevels.map((level, lIdx) => (
                     <div key={`lvl-${lIdx}`} className="w-full flex flex-col items-center relative py-10">
                         {/* Level Header (Simplified Branding) */}
-                        <div className="z-20 mb-10">
-                            <div className={`relative px-10 py-6 rounded-2xl shadow-[0_2px_15px_rgba(0,0,0,0.03)] border flex flex-col items-center min-w-[300px] bg-white transition-all ${level.locked ? 'border-gray-100 grayscale opacity-70' : 'border-[#0070c0]/20'}`}>
-                                <span className={`text-[11px] font-bold uppercase tracking-[0.3em] mb-1.5 ${level.locked ? 'text-gray-300' : 'text-[#0070c0]'}`}>{level.level}</span>
-                                <h3 className="text-[24px] font-bold text-[#1c2127]">{level.title}</h3>
+                        <div className="z-20 mb-8 md:mb-10 px-4">
+                            <div className={`relative px-6 md:px-10 py-5 md:py-6 rounded-2xl shadow-sm border flex flex-col items-center min-w-[280px] md:min-w-[340px] lg:min-w-[400px] bg-white transition-all ${level.locked ? 'border-gray-100 grayscale opacity-70' : 'border-[#0070c0]/20'}`}>
+                                <span className={`text-[10px] md:text-[11px] font-bold uppercase tracking-[0.3em] mb-1 ${level.locked ? 'text-gray-300' : 'text-[#0070c0]'}`}>{level.level}</span>
+                                <h3 className="text-[20px] md:text-[24px] font-bold text-[#1c2127] text-center">{level.title}</h3>
                                 {!level.locked && (
-                                    <div className="mt-4 flex gap-3">
-                                        <div className="px-4 py-1.5 bg-[#f8f9fa] border border-gray-100 text-[#333] text-[11px] font-bold rounded-sm uppercase tracking-wider">{level.modules.length} Modul</div>
-                                        <button className="px-4 py-1.5 bg-[#ff7a00] text-white text-[11px] font-bold rounded-sm uppercase tracking-wider shadow-sm hover:bg-orange-500">Ganti Level</button>
+                                    <div className="mt-4 flex gap-2 md:gap-3">
+                                        <div className="px-3 md:px-4 py-1.5 bg-[#f8f9fa] border border-gray-100 text-[#333] text-[10px] md:text-[11px] font-bold rounded-sm uppercase tracking-wider">{level.modules.length} Modul</div>
+                                        <button className="px-3 md:px-4 py-1.5 bg-[#ff7a00] text-white text-[10px] md:text-[11px] font-bold rounded-sm uppercase tracking-wider shadow-sm hover:bg-orange-500 transition-colors">Leveling</button>
                                     </div>
                                 )}
                             </div>
@@ -319,7 +330,7 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
                         <div className="w-full flex flex-col items-center relative gap-4">
                             {level.modules.map((mod, mIdx) => {
                                 const isLeft = mIdx % 2 === 0;
-                                const xOffset = isLeft ? 'md:-translate-x-32 lg:-translate-x-44' : 'md:translate-x-32 lg:translate-x-44';
+                                const xOffset = isLeft ? '-translate-x-8 md:-translate-x-32 lg:-translate-x-44' : 'translate-x-8 md:translate-x-32 lg:translate-x-44';
                                 const isMatch = (activeFilter === 'special' && mod.specialTrack === selectedMission) ||
                                     (activeFilter === 'focus' && userData.weaknesses.includes(mod.category)) ||
                                     (activeFilter === 'sector' && mod.sector?.includes(userData.sector));
@@ -330,23 +341,33 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
                                 const isPDF = mod.type?.toLowerCase().includes('pdf') || mod.type?.toLowerCase().includes('modul');
 
                                 return (
-                                    <div key={`mod-${mod.id}`} onClick={(e) => { e.stopPropagation(); setSelectedModuleId(isSelected ? null : mod.id); }} className={`group flex flex-col items-center transition-all ${xOffset} ${isMatch ? 'scale-105' : 'scale-95 grayscale-[0.3]'} ${isSelected ? 'z-[80]' : 'z-10'}`}>
+                                    <div key={`mod-${mod.id}`} onClick={(e) => { e.stopPropagation(); setSelectedModuleId(isSelected ? null : mod.id); }} className={`group flex flex-col items-center transition-all ${xOffset} ${isMatch ? 'scale-105' : 'scale-95 grayscale-[0.3]'} ${isSelected ? 'z-[80]' : 'z-10 hover:z-[85]'}`}>
                                         <div className="relative">
                                             {/* Node Visual (Rectangular/Rounded like Catalog Cards) */}
-                                            <div className={`w-28 h-28 rounded-2xl flex flex-col items-center justify-center transition-all shadow-md relative border-b-4 bg-white ${level.locked ? 'border-gray-100' : `${isMatch ? 'border-[#0070c0]' : 'border-gray-100'}`} ${isSelected ? 'shadow-[0_0_30px_rgba(0,112,192,0.2)]' : ''}`}>
-                                                <div className={`w-12 h-12 rounded-lg mb-1.5 flex items-center justify-center ${level.locked ? 'bg-gray-50' : (mod.bg || 'bg-[#55B5E6]')}`}>
-                                                    <div className="text-white font-black text-[18px]">{mIdx + 1}</div>
+                                            <div className={`w-24 h-24 md:w-28 md:h-28 rounded-2xl flex flex-col items-center justify-center transition-all shadow-md relative border-b-4 bg-white ${level.locked ? 'border-gray-100' : `${isMatch ? (mod.completed ? 'border-orange-200' : 'border-[#0070c0]') : 'border-gray-100'}`} ${isSelected ? 'shadow-[0_0_30px_rgba(0,112,192,0.2)]' : ''}`}>
+                                                <div className={`w-10 h-10 md:w-12 md:h-12 rounded-lg mb-1 flex md:mb-1.5 items-center justify-center ${level.locked ? 'bg-gray-50' : (mod.completed ? 'bg-orange-500' : (mod.bg || 'bg-[#55B5E6]'))}`}>
+                                                    <div className="text-white font-black text-[16px] md:text-[18px]">
+                                                        {mod.completed ? (
+                                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                                        ) : (
+                                                            activeFilter === 'special' ? '' : mIdx + 1
+                                                        )}
+                                                    </div>
                                                 </div>
-                                                <span className="text-[10px] font-bold text-gray-400 group-hover:text-[#0070c0]">VIEW DETAILS</span>
-
-                                                {/* Match Indicator Dot (Small, clean) */}
-                                                {isMatch && !level.locked && (
-                                                    <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#ff7a00] border-2 border-white shadow-sm"></div>
-                                                )}
+                                                <span className="text-[9px] md:text-[10px] font-bold text-gray-400 group-hover:text-[#0070c0] uppercase">{mod.completed ? 'Selesai' : 'Detail'}</span>
                                             </div>
 
-                                            {/* Hover Detail Panel (Clean White Style) */}
-                                            <div className={`absolute top-1/2 ${isLeft ? 'left-full ml-10' : 'right-full mr-10'} -translate-y-1/2 bg-white rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100 p-0 overflow-hidden min-w-[340px] transition-all z-[90] ${isSelected ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 hidden md:block'}`} onClick={(e) => e.stopPropagation()}>
+                                            {/* DESKTOP ONLY Hover/Click Detail Panel (Clean White Style) */}
+                                            <div className={`
+                                                hidden md:block
+                                                ${isSelected ? 'md:opacity-100 md:scale-100 md:pointer-events-auto' : 'opacity-0 scale-95 pointer-events-none md:group-hover:opacity-100 md:group-hover:scale-100 md:group-hover:pointer-events-auto md:group-hover:delay-150'}
+                                                bg-white transition-all duration-300 ease-out z-[120] overflow-hidden
+                                                shadow-[0_20px_60px_rgba(0,0,0,0.2)] border border-gray-100
+                                                md:absolute md:top-1/2 md:-translate-y-1/2 md:rounded-xl md:w-[340px]
+                                                ${isLeft ? 'md:left-full md:ml-2' : 'md:right-full md:mr-2'} 
+                                            `} onClick={(e) => e.stopPropagation()}>
+                                                {/* Visual bridge to prevent hover loss on Desktop */}
+                                                <div className={`absolute top-0 bottom-0 ${isLeft ? '-left-6 w-6' : '-right-6 w-6'} bg-transparent`}></div>
                                                 {/* Video Thumbnail Section (Conditional) */}
                                                 {isVideo && (
                                                     <div className={`w-full aspect-video ${mod.bg || 'bg-[#55B5E6]'} relative flex items-center justify-center group/vid overflow-hidden`}>
@@ -360,26 +381,26 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
                                                     </div>
                                                 )}
 
-                                                <div className="p-8">
-                                                    <div className="flex flex-col gap-5">
+                                                <div className="p-6 md:p-8">
+                                                    <div className="flex flex-col gap-4 md:gap-5">
                                                         <div className="flex flex-col gap-1.5">
-                                                            <div className="flex flex-wrap gap-2 mb-1.5">
-                                                                <div className="bg-[#f8f9fa] text-[#0070c0] text-[11px] font-bold px-4 py-1.5 rounded-sm uppercase tracking-wider">{mod.category}</div>
-                                                                {mod.specialTrack && <div className="bg-emerald-50 text-emerald-600 text-[11px] font-bold px-4 py-1.5 rounded-sm uppercase tracking-wider">MISI: {mod.specialTrack.toUpperCase()}</div>}
+                                                            <div className="flex flex-wrap gap-2 mb-1">
+                                                                <div className="bg-[#f8f9fa] text-[#0070c0] text-[10px] md:text-[11px] font-bold px-3 md:px-4 py-1.5 rounded-sm uppercase tracking-wider">{mod.category}</div>
+                                                                {mod.specialTrack && <div className="bg-emerald-50 text-emerald-600 text-[10px] md:text-[11px] font-bold px-3 md:px-4 py-1.5 rounded-sm uppercase tracking-wider">MISI: {mod.specialTrack.toUpperCase()}</div>}
                                                             </div>
-                                                            <h5 className="font-bold text-[#333] text-[18px] leading-snug">{mod.title}</h5>
+                                                            <h5 className="font-bold text-[#333] text-[16px] md:text-[18px] leading-snug">{mod.title}</h5>
                                                         </div>
 
                                                         {/* Format & Duration info */}
-                                                        <div className="flex items-center gap-4 py-4 border-t border-gray-50">
-                                                            <div className={`px-3 py-1 rounded-sm text-[11px] font-black uppercase tracking-tight border ${isVideo ? 'bg-orange-50 border-orange-100 text-orange-600' : (isPDF ? 'bg-blue-50 border-blue-100 text-blue-600' : 'bg-gray-50 border-gray-100 text-gray-600')}`}>
+                                                        <div className="flex items-center gap-4 py-3 md:py-4 border-t border-gray-50">
+                                                            <div className={`px-3 py-1 rounded-sm text-[10px] md:text-[11px] font-black uppercase tracking-tight border ${isVideo ? 'bg-orange-50 border-orange-100 text-orange-600' : (isPDF ? 'bg-blue-50 border-blue-100 text-blue-600' : 'bg-gray-50 border-gray-100 text-gray-600')}`}>
                                                                 {mod.type}
                                                             </div>
                                                             <span className="text-gray-200">|</span>
-                                                            <span className="text-[13px] text-gray-400 font-bold">{mod.duration} Estimasi</span>
+                                                            <span className="text-[12px] md:text-[13px] text-gray-400 font-bold">{mod.duration} Estimasi</span>
                                                         </div>
 
-                                                        <button onClick={() => onModuleSelect && onModuleSelect(mod)} className="w-full py-4 bg-[#0070c0] text-white text-[13px] font-bold rounded-lg shadow-sm hover:bg-[#005fa3] transition-all uppercase tracking-widest">
+                                                        <button onClick={() => onModuleSelect && onModuleSelect(mod)} className="w-full py-3.5 md:py-4 bg-[#0070c0] text-white text-[12px] md:text-[13px] font-bold rounded-xl shadow-md hover:bg-[#005fa3] transition-all uppercase tracking-widest active:scale-[0.98]">
                                                             {isVideo ? 'PUTAR VIDEO' : 'BACA MODUL'}
                                                         </button>
                                                     </div>
@@ -388,11 +409,11 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
                                         </div>
 
                                         {/* Name Label below the node */}
-                                        <div className="mt-4 text-center px-4">
-                                            <h4 className={`text-[14px] font-bold max-w-[180px] leading-tight mb-1.5 ${level.locked ? 'text-gray-300' : 'text-[#333]'}`}>{mod.title}</h4>
+                                        <div className="mt-2 md:mt-4 text-center px-3 py-1.5 md:py-2 bg-white/90 backdrop-blur-md rounded-xl relative z-10 mx-auto max-w-[150px] md:max-w-[190px]">
+                                            <h4 className={`text-[12px] md:text-[14px] font-bold leading-tight mb-1 md:mb-1.5 ${level.locked ? 'text-gray-300' : 'text-[#333]'}`}>{mod.title}</h4>
                                             {!level.locked && (
                                                 <div className="flex flex-col items-center">
-                                                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{mod.category}</p>
+                                                    <p className="text-[9px] md:text-[10px] font-bold text-gray-400 uppercase tracking-widest">{mod.category}</p>
                                                 </div>
                                             )}
                                         </div>
@@ -419,6 +440,51 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* MOBILE ONLY GLOBAL BOTTOM SHEET */}
+            <div className={`md:hidden fixed bottom-0 left-0 right-0 bg-white rounded-t-[2rem] shadow-[0_-10px_40px_rgba(0,0,0,0.15)] z-[120] transition-transform duration-300 ease-out overflow-hidden flex flex-col max-h-[85vh] ${selectedModuleId && selectedModuleData ? 'translate-y-0' : 'translate-y-full'}`} onClick={(e) => e.stopPropagation()}>
+                <div className="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mt-4 mb-2 shrink-0"></div>
+
+                {selectedModuleData && (
+                    <div className="overflow-y-auto no-scrollbar pb-8">
+                        {/* Video Thumbnail Section (Conditional) */}
+                        {selectedModuleData.type?.toLowerCase().includes('video') && (
+                            <div className={`w-full aspect-video ${selectedModuleData.bg || 'bg-[#55B5E6]'} relative flex items-center justify-center group/vid overflow-hidden`}>
+                                {/* Play Button Icon Overlay */}
+                                <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 shadow-lg">
+                                    <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[15px] border-l-white border-b-[10px] border-b-transparent ml-1.5"></div>
+                                </div>
+                                <div className="absolute bottom-3 left-3 bg-black/40 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded">
+                                    VIDEO PELATIHAN
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="p-6">
+                            <div className="flex flex-col gap-4">
+                                <div className="flex flex-wrap gap-2 mb-1">
+                                    <div className="bg-[#f8f9fa] text-[#0070c0] text-[10px] font-bold px-3 py-1.5 rounded-sm uppercase tracking-wider">{selectedModuleData.category}</div>
+                                    {selectedModuleData.specialTrack && <div className="bg-emerald-50 text-emerald-600 text-[10px] font-bold px-3 py-1.5 rounded-sm uppercase tracking-wider">MISI: {selectedModuleData.specialTrack.toUpperCase()}</div>}
+                                </div>
+                                <h5 className="font-bold text-[#333] text-[16px] leading-snug">{selectedModuleData.title}</h5>
+
+                                {/* Format & Duration info */}
+                                <div className="flex items-center gap-4 py-3 border-t border-gray-50 mt-1">
+                                    <div className={`px-3 py-1 rounded-sm text-[10px] font-black uppercase tracking-tight border ${selectedModuleData.type?.toLowerCase().includes('video') ? 'bg-orange-50 border-orange-100 text-orange-600' : 'bg-blue-50 border-blue-100 text-blue-600'}`}>
+                                        {selectedModuleData.type}
+                                    </div>
+                                    <span className="text-gray-200">|</span>
+                                    <span className="text-[12px] text-gray-400 font-bold">{selectedModuleData.duration} Estimasi</span>
+                                </div>
+
+                                <button onClick={() => { onModuleSelect && onModuleSelect(selectedModuleData); setSelectedModuleId(null); }} className="w-full py-3.5 bg-[#0070c0] text-white text-[12px] font-bold rounded-xl shadow-md hover:bg-[#005fa3] transition-all uppercase tracking-widest active:scale-[0.98] mt-2">
+                                    {selectedModuleData.type?.toLowerCase().includes('video') ? 'PUTAR VIDEO' : 'BACA MODUL'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </div>
 
             <style>{`
