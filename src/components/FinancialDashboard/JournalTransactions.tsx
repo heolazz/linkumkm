@@ -84,7 +84,7 @@ const JournalTransactions: React.FC = () => {
                     <input
                         type="text"
                         placeholder="Cari transaksi, kategori, atau no. bukti..."
-                        className="w-full h-12 pl-12 pr-5 bg-white border border-[#E9EFF5] focus:border-black rounded-xl outline-none font-bold text-sm text-black transition-all shadow-sm"
+                        className="w-full h-12 pl-12 pr-5 bg-white border border-[#E9EFF5] focus:border-black rounded-xl outline-none font-medium text-sm text-black transition-all shadow-sm placeholder:font-normal"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -92,7 +92,7 @@ const JournalTransactions: React.FC = () => {
 
                 <div className="flex gap-3">
                     <label className="flex-1 md:flex-none">
-                        <div className="bg-white border border-[#E9EFF5] text-[#738294] px-5 py-2.5 rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-sm hover:bg-gray-50 active:scale-95 transition-all cursor-pointer">
+                        <div className="bg-white border border-[#E9EFF5] text-[#738294] px-5 py-2.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-sm hover:bg-gray-50 active:scale-95 transition-all cursor-pointer">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
                             <span className="hidden sm:inline">Upload Massal (CSV)</span>
                             <span className="sm:hidden">Upload</span>
@@ -114,7 +114,7 @@ const JournalTransactions: React.FC = () => {
             <div className="space-y-4">
                 <div className="flex items-center justify-between mb-2 px-2">
                     <h3 className="text-lg font-bold text-black">Data Jurnal Umum</h3>
-                    <p className="text-[11px] font-bold text-text-muted uppercase tracking-widest">{filteredTransactions.length} Transaksi</p>
+                    <p className="text-[11px] font-medium text-text-muted uppercase tracking-widest">{filteredTransactions.length} Transaksi</p>
                 </div>
 
                 {filteredTransactions.length === 0 ? (
@@ -122,7 +122,7 @@ const JournalTransactions: React.FC = () => {
                         <div className="w-20 h-20 bg-bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 text-text-muted">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                         </div>
-                        <p className="text-text-muted font-bold uppercase tracking-wider text-xs">Jurnal Umum Masih Kosong</p>
+                        <p className="text-text-muted font-medium uppercase tracking-wider text-xs">Jurnal Umum Masih Kosong</p>
                     </div>
                 ) : (
                     filteredTransactions.map((tx, index) => (
@@ -144,14 +144,14 @@ const JournalTransactions: React.FC = () => {
                                     <div className="flex items-center gap-2 mb-1 overflow-hidden">
                                         <h4 className="font-bold text-black text-[15px] md:text-lg truncate">{tx.description}</h4>
                                     </div>
-                                    <div className="flex items-center gap-2 text-[10px] md:text-xs font-bold text-text-muted">
+                                    <div className="flex items-center gap-2 text-[10px] md:text-xs font-medium text-text-muted">
                                         <span className="shrink-0">{new Date(tx.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' })}</span>
                                         <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
-                                        <span className="uppercase text-text-muted tracking-wider truncate">{tx.category}</span>
+                                        <span className="uppercase text-text-muted tracking-wide truncate">{tx.category}</span>
                                         {tx.evidenceNo && (
                                             <>
                                                 <span className="w-1 h-1 bg-gray-200 rounded-full"></span>
-                                                <span className="text-secondary">{tx.evidenceNo}</span>
+                                                <span className="text-secondary font-semibold">{tx.evidenceNo}</span>
                                             </>
                                         )}
                                     </div>

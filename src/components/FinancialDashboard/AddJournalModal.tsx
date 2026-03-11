@@ -76,7 +76,7 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
                         </div>
                         <div>
                             <h3 className="text-base font-bold text-black">Tambah Jurnal</h3>
-                            <p className="text-[9px] font-bold text-text-muted uppercase tracking-wider">Input transaksi jurnal umum</p>
+                            <p className="text-[9px] font-medium text-text-muted uppercase tracking-wider">Input transaksi jurnal umum</p>
                         </div>
                     </div>
                     <button onClick={onClose} className="p-2 bg-gray-50 text-gray-400 hover:text-gray-600 rounded-full transition-colors active:scale-90">
@@ -90,28 +90,28 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
                         <div className="text-amber-600 mt-0.5 shrink-0">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
                         </div>
-                        <p className="text-[11px] font-bold text-amber-800 leading-relaxed">
-                            Pastikan jurnal penginputan pada Debit dan Kredit sudah <span className="text-amber-900 underline decoration-2">Balance</span> sebelum Anda klik simpan. Setiap baris hanya boleh berisi nominal Debit atau Kredit, tidak keduanya.
+                        <p className="text-[11px] font-medium text-amber-800 leading-relaxed">
+                            Pastikan jurnal penginputan pada Debit dan Kredit sudah <span className="text-amber-900 underline font-bold decoration-2">Balance</span> sebelum Anda klik simpan. Setiap baris hanya boleh berisi nominal Debit atau Kredit, tidak keduanya.
                         </p>
                     </div>
                     {/* Date & Evidence */}
                     <div className="grid grid-cols-2 gap-6">
                         <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-text-muted uppercase tracking-[0.2em] block px-1">Tanggal</label>
+                            <label className="text-[10px] font-medium text-text-muted uppercase tracking-[0.2em] block px-1">Tanggal</label>
                             <div className="relative">
                                 <div className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                                 </div>
                                 <input
                                     type="date"
-                                    className="w-full h-10 pl-11 pr-4 bg-bg-secondary border-2 border-[#E9EFF5] focus:border-black rounded-xl outline-none text-xs font-bold text-black transition-all"
+                                    className="w-full h-10 pl-11 pr-4 bg-bg-secondary border-2 border-[#E9EFF5] focus:border-black rounded-xl outline-none text-xs font-medium text-black transition-all"
                                     value={date}
                                     onChange={(e) => setDate(e.target.value)}
                                 />
                             </div>
                         </div>
                         <div className="space-y-2">
-                            <label className="text-[10px] font-bold text-text-muted uppercase tracking-[0.2em] block px-1">No. Bukti</label>
+                            <label className="text-[10px] font-medium text-text-muted uppercase tracking-[0.2em] block px-1">No. Bukti</label>
                             <div className="relative">
                                 <div className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>
@@ -119,7 +119,7 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
                                 <input
                                     type="text"
                                     placeholder="BKM-001"
-                                    className="w-full h-10 pl-11 pr-4 bg-bg-secondary border-2 border-[#E9EFF5] focus:border-black rounded-xl outline-none text-xs font-bold text-black transition-all"
+                                    className="w-full h-10 pl-11 pr-4 bg-bg-secondary border-2 border-[#E9EFF5] focus:border-black rounded-xl outline-none text-xs font-medium text-black transition-all"
                                     value={evidenceNo}
                                     onChange={(e) => setEvidenceNo(e.target.value)}
                                 />
@@ -129,11 +129,11 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
 
                     {/* Keterangan */}
                     <div className="space-y-2">
-                        <label className="text-[10px] font-bold text-text-muted uppercase tracking-[0.2em] block px-1">Keterangan Transaksi</label>
+                        <label className="text-[10px] font-medium text-text-muted uppercase tracking-[0.2em] block px-1">Keterangan Transaksi</label>
                         <textarea
                             rows={3}
                             placeholder="Contoh: Pembayaran gaji karyawan bulan Oktober"
-                            className="w-full p-5 bg-bg-secondary border-2 border-[#E9EFF5] focus:border-black rounded-2xl outline-none text-sm font-bold text-black transition-all resize-none"
+                            className="w-full p-5 bg-bg-secondary border-2 border-[#E9EFF5] focus:border-black rounded-2xl outline-none text-sm font-medium text-black transition-all resize-none"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
@@ -141,7 +141,7 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
 
                     {/* Detail Akun */}
                     <div className="space-y-4">
-                        <label className="text-[10px] font-bold text-text-muted uppercase tracking-[0.2em] block px-1">Detail Akun</label>
+                        <label className="text-[10px] font-medium text-text-muted uppercase tracking-[0.2em] block px-1">Detail Akun</label>
                         <div className="border border-[#E9EFF5] rounded-3xl overflow-hidden shadow-sm bg-white">
                             <table className="w-full">
                                 <thead className="bg-gray-50/50 border-b border-[#E9EFF5]">
@@ -157,20 +157,20 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
                                         <tr key={idx} className="group hover:bg-gray-50/30 transition-colors">
                                             <td className="p-3">
                                                 <select
-                                                    className="w-full h-9 px-3 bg-white border border-[#E9EFF5] focus:border-black rounded-lg outline-none text-[11px] font-bold text-black transition-all appearance-none"
+                                                    className="w-full h-9 px-3 bg-white border border-[#E9EFF5] focus:border-black rounded-lg outline-none text-[11px] font-medium text-black transition-all appearance-none"
                                                     value={entry.accountName}
                                                     onChange={(e) => updateEntry(idx, 'accountName', e.target.value)}
                                                 >
-                                                    <option value="">Pilih Akun</option>
+                                                    <option value="" className="font-normal">Pilih Akun</option>
                                                     {availableAccounts.map(acc => (
-                                                        <option key={acc} value={acc}>{acc}</option>
+                                                        <option key={acc} value={acc} className="font-medium">{acc}</option>
                                                     ))}
                                                 </select>
                                             </td>
                                             <td className="p-3">
                                                 <input
                                                     type="number"
-                                                    className="w-full h-9 px-3 bg-white border border-[#E9EFF5] focus:border-black rounded-lg outline-none text-[10px] font-bold text-text-main text-right"
+                                                    className="w-full h-9 px-3 bg-white border border-[#E9EFF5] focus:border-black rounded-lg outline-none text-[10px] font-medium text-text-main text-right"
                                                     value={entry.debit || ''}
                                                     placeholder="0"
                                                     onChange={(e) => updateEntry(idx, 'debit', parseFloat(e.target.value) || 0)}
@@ -179,7 +179,7 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
                                             <td className="p-3">
                                                 <input
                                                     type="number"
-                                                    className="w-full h-9 px-3 bg-white border border-[#E9EFF5] focus:border-black rounded-lg outline-none text-[10px] font-bold text-text-main text-right"
+                                                    className="w-full h-9 px-3 bg-white border border-[#E9EFF5] focus:border-black rounded-lg outline-none text-[10px] font-medium text-text-main text-right"
                                                     value={entry.credit || ''}
                                                     placeholder="0"
                                                     onChange={(e) => updateEntry(idx, 'credit', parseFloat(e.target.value) || 0)}
@@ -202,7 +202,7 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
                                         <td colSpan={4} className="p-3">
                                             <button
                                                 onClick={addAccountRow}
-                                                className="flex items-center gap-2 text-secondary font-bold text-[11px] hover:translate-x-1 transition-transform ml-2"
+                                                className="flex items-center gap-2 text-secondary font-semibold text-[11px] hover:translate-x-1 transition-transform ml-2"
                                             >
                                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                                 TAMBAH AKUN
@@ -224,7 +224,7 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
                             <div className="text-secondary">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
                             </div>
-                            <p className="text-[11px] font-bold text-text-muted">
+                            <p className="text-[11px] font-medium text-text-muted">
                                 Masukkan nominal debit dan kredit pada baris akun di atas.
                             </p>
                         </div>

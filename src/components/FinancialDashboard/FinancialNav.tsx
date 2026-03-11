@@ -70,7 +70,7 @@ const FinancialNav: React.FC<FinancialNavProps> = ({ activeSection, onSelect }) 
                         {item.icon}
                     </div>
                     <span className={`text-[9px] uppercase tracking-[0.15em] transition-all duration-300 relative z-10 ${activeSection === item.id
-                        ? 'font-bold text-black opacity-100'
+                        ? 'font-semibold text-black opacity-100'
                         : 'font-medium text-[#738294] opacity-50'
                         }`}>
                         {item.label}

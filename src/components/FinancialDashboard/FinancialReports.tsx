@@ -50,9 +50,9 @@ const FinancialReports: React.FC = () => {
                     <button
                         key={report}
                         onClick={() => setActiveReport(report)}
-                        className={`flex-1 min-w-[100px] px-4 py-2.5 rounded-xl font-bold text-[11px] md:text-sm transition-all uppercase tracking-wider ${activeReport === report
-                            ? 'bg-white text-black shadow-sm scale-[1.02]'
-                            : 'text-text-muted hover:text-black'
+                        className={`flex-1 min-w-[100px] px-4 py-2.5 rounded-xl text-[11px] md:text-sm transition-all uppercase tracking-wider ${activeReport === report
+                            ? 'bg-white text-black shadow-sm scale-[1.02] font-semibold'
+                            : 'text-text-muted hover:text-black font-medium'
                             }`}
                     >
                         {report}
@@ -70,7 +70,7 @@ const FinancialReports: React.FC = () => {
                             { title: 'Laba/Rugi Bersih', val: netProfit, color: 'text-black', bg: 'bg-white' }
                         ].map((card, idx) => (
                             <div key={idx} className={`p-6 md:p-8 rounded-[2.5rem] border border-[#E9EFF5] ${card.bg} shadow-sm group relative overflow-hidden transition-all hover:shadow-md cursor-default`}>
-                                <h4 className="text-[10px] md:text-[11px] font-bold text-[#738294] uppercase tracking-[0.2em] mb-4">{card.title}</h4>
+                                <h4 className="text-[10px] md:text-[11px] font-medium text-[#738294] uppercase tracking-[0.2em] mb-4">{card.title}</h4>
                                 <p className={`text-2xl md:text-3xl font-bold ${card.color} tracking-tight`}>
                                     {formatCurrency(card.val)}
                                 </p>
@@ -85,15 +85,15 @@ const FinancialReports: React.FC = () => {
                                 <h3 className="text-lg font-bold text-black mb-8">Detail Laba Rugi</h3>
                                 <div className="space-y-6">
                                     <div className="flex justify-between items-center pb-4 border-b border-gray-50">
-                                        <span className="text-sm font-bold text-text-muted uppercase tracking-wider">Pendapatan Operasional</span>
+                                        <span className="text-sm font-medium text-text-muted uppercase tracking-wider">Pendapatan Operasional</span>
                                         <span className="text-lg font-bold text-black">{formatCurrency(totalIncome)}</span>
                                     </div>
                                     <div className="flex justify-between items-center pb-4 border-b border-gray-50">
-                                        <span className="text-sm font-bold text-text-muted uppercase tracking-wider">Beban Operasional</span>
+                                        <span className="text-sm font-medium text-text-muted uppercase tracking-wider">Beban Operasional</span>
                                         <span className="text-lg font-bold text-black">{formatCurrency(totalExpense)}</span>
                                     </div>
                                     <div className="flex justify-between items-center pt-2">
-                                        <span className="text-sm font-bold text-black uppercase tracking-[0.15em]">Laba Bersih</span>
+                                        <span className="text-sm font-semibold text-black uppercase tracking-[0.15em]">Laba Bersih</span>
                                         <div className="bg-bg-secondary px-4 py-2 rounded-2xl border border-blue-50">
                                             <span className={`text-xl font-bold text-black`}>
                                                 {formatCurrency(netProfit)}
@@ -111,7 +111,7 @@ const FinancialReports: React.FC = () => {
                         {/* Chart Illustration */}
                         <div className="bg-white p-7 md:p-10 rounded-[2.5rem] border border-[#E9EFF5] shadow-sm relative overflow-hidden group">
                             <h3 className="text-xl font-bold text-black mb-2 relative z-10">Alokasi Biaya</h3>
-                            <p className="text-xs md:text-sm text-text-muted font-bold mb-8 relative z-10">Distribusi pengeluaran per kategori</p>
+                            <p className="text-xs md:text-sm text-text-muted font-medium mb-8 relative z-10">Distribusi pengeluaran per kategori</p>
 
                             <div className="h-[280px] md:h-[320px] w-full">
                                 {categoryData.length > 0 ? (
@@ -139,7 +139,7 @@ const FinancialReports: React.FC = () => {
                                         </PieChart>
                                     </ResponsiveContainer>
                                 ) : (
-                                    <div className="flex items-center justify-center h-full text-[#AAB4C1] font-bold">Data Belum Tersedia</div>
+                                    <div className="flex items-center justify-center h-full text-[#AAB4C1] font-medium">Data Belum Tersedia</div>
                                 )}
                             </div>
                         </div>
@@ -150,7 +150,7 @@ const FinancialReports: React.FC = () => {
                     <div className="w-20 h-20 bg-[#F8FBFF] rounded-full mx-auto flex items-center justify-center text-[#AAB4C1]">
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z"></path></svg>
                     </div>
-                    <p className="text-[#AAB4C1] font-bold uppercase tracking-[0.2em] text-xs">Laporan {activeReport}<br />Sedang Disiapkan</p>
+                    <p className="text-[#AAB4C1] font-medium uppercase tracking-[0.2em] text-xs">Laporan {activeReport}<br />Sedang Disiapkan</p>
                 </div>
             )}
 
@@ -161,7 +161,7 @@ const FinancialReports: React.FC = () => {
                 </div>
                 <div>
                     <h5 className="text-lg font-bold mb-1">Tips Keuangan Berkelanjutan</h5>
-                    <p className="text-xs md:text-sm text-blue-100/90 font-bold leading-relaxed">
+                    <p className="text-xs md:text-sm text-blue-100/90 font-normal leading-relaxed">
                         Analisis Laba Rugi membantu Anda membedakan mana akun yang merupakan aset dan mana yang merupakan beban. Pastikan margin keuntungan Anda tetap di atas 20% untuk kesehatan usaha jangka panjang.
                     </p>
                 </div>

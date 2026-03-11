@@ -46,7 +46,7 @@ const FinancialDashboard: React.FC = () => {
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                     </div>
                     <h3 className="text-2xl font-bold text-text-main mb-2">Akses Terkunci</h3>
-                    <p className="text-text-muted font-medium mb-10 text-sm">Masukkan PIN Keuangan Anda untuk melihat data laporan.</p>
+                    <p className="text-text-muted font-normal mb-10 text-sm">Masukkan PIN Keuangan Anda untuk melihat data laporan.</p>
 
                     <form onSubmit={handleUnlock} className="space-y-6">
                         <div className="flex justify-center gap-3">
@@ -64,7 +64,7 @@ const FinancialDashboard: React.FC = () => {
                             Buka Laporan
                         </button>
                     </form>
-                    <p className="mt-8 text-[11px] font-bold text-text-muted uppercase tracking-widest">Gunakan PIN default: 1234</p>
+                    <p className="mt-8 text-[11px] font-medium text-text-muted uppercase tracking-widest">Gunakan PIN default: 1234</p>
                 </div>
             </div>
         );
@@ -86,11 +86,11 @@ const FinancialDashboard: React.FC = () => {
                                 </h2>
                                 <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse mt-1"></span>
                             </div>
-                            <h2 className="text-xl md:text-3xl font-bold text-black/70 tracking-tight -mt-1 uppercase">
+                            <h2 className="text-xl md:text-3xl font-semibold text-black/70 tracking-tight -mt-1 uppercase">
                                 {userName}
                             </h2>
                             <div className="flex items-center gap-2 mt-1 bg-gray-100 w-fit px-2 py-0.5 rounded-lg border border-gray-200">
-                                <span className="text-[10px] md:text-xs font-bold text-black/80 uppercase tracking-widest leading-none">
+                                <span className="text-[10px] md:text-xs font-medium text-black/80 uppercase tracking-widest leading-none">
                                     Status: Profit +12%
                                 </span>
                             </div>
@@ -103,9 +103,9 @@ const FinancialDashboard: React.FC = () => {
                             <button
                                 key={section}
                                 onClick={() => setActiveSection(section)}
-                                className={`px-8 py-3 rounded-2xl font-bold text-sm transition-all ${activeSection === section
-                                    ? 'bg-white text-black shadow-md scale-[1.02]'
-                                    : 'text-text-muted hover:text-black'
+                                className={`px-8 py-3 rounded-2xl text-sm transition-all ${activeSection === section
+                                    ? 'bg-white text-black shadow-md scale-[1.02] font-bold'
+                                    : 'text-text-muted hover:text-black font-medium'
                                     }`}
                             >
                                 {section}

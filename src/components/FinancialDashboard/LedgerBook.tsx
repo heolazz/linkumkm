@@ -65,7 +65,7 @@ const LedgerBook: React.FC = () => {
                     </button>
                     <div className="relative flex-1 md:flex-none min-w-[180px]">
                         <select
-                            className="w-full bg-white border border-[#E9EFF5] px-4 py-2.5 rounded-xl font-bold text-sm text-black outline-none focus:border-black transition-colors appearance-none pr-10 shadow-sm"
+                            className="w-full bg-white border border-[#E9EFF5] px-4 py-2.5 rounded-xl font-medium text-sm text-black outline-none focus:border-black transition-colors appearance-none pr-10 shadow-sm"
                             value={filterAccount}
                             onChange={(e) => setFilterAccount(e.target.value)}
                         >
@@ -82,10 +82,10 @@ const LedgerBook: React.FC = () => {
             {isAddAccountOpen && (
                 <div className="bg-bg-secondary p-6 rounded-[2rem] border border-blue-100 flex flex-col md:flex-row items-center gap-4 animate-in slide-in-from-top-2 duration-300">
                     <div className="flex-1 w-full">
-                        <label className="text-xs font-bold text-black uppercase tracking-widest block mb-2 px-1">Nama Akun Baru</label>
+                        <label className="text-xs font-medium text-black uppercase tracking-widest block mb-2 px-1">Nama Akun Baru</label>
                         <input
                             type="text"
-                            className="w-full h-12 px-5 bg-white border-2 border-blue-50 focus:border-black rounded-xl outline-none text-md font-bold text-black transition-all"
+                            className="w-full h-12 px-5 bg-white border-2 border-blue-50 focus:border-black rounded-xl outline-none text-md font-medium text-black transition-all"
                             placeholder="Misal: Modal Usaha, Beban Sewa"
                             value={newAccountName}
                             onChange={(e) => setNewAccountName(e.target.value)}
@@ -118,7 +118,7 @@ const LedgerBook: React.FC = () => {
                                             <div className="w-16 h-16 bg-[#F8FBFF] rounded-full flex items-center justify-center text-[#AAB4C1]">
                                                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
                                             </div>
-                                            <p className="text-[#AAB4C1] font-bold text-sm">Tidak ada transaksi ditemukan</p>
+                                            <p className="text-[#AAB4C1] font-medium text-sm">Tidak ada transaksi ditemukan</p>
                                         </div>
                                     </td>
                                 </tr>
@@ -130,7 +130,7 @@ const LedgerBook: React.FC = () => {
                                                 <span className="text-[13px] font-bold text-[#202E3E]">
                                                     {new Date(item.date).toLocaleDateString('id-ID', { day: '2-digit', month: 'short' })}
                                                 </span>
-                                                <span className="text-[10px] font-bold text-[#AAB4C1]">
+                                                <span className="text-[10px] font-medium text-[#AAB4C1]">
                                                     {new Date(item.date).getFullYear()}
                                                 </span>
                                             </div>
@@ -138,7 +138,7 @@ const LedgerBook: React.FC = () => {
                                         <td className="px-6 py-6">
                                             <div className="flex flex-col">
                                                 <span className="text-[14px] font-bold text-black group-hover:text-black transition-colors">{item.description}</span>
-                                                <span className="text-[9px] font-bold text-text-muted uppercase tracking-widest">{item.account}</span>
+                                                <span className="text-[9px] font-medium text-text-muted uppercase tracking-widest">{item.account}</span>
                                             </div>
                                         </td>
                                         <td className="px-6 py-6 text-right">
@@ -165,7 +165,7 @@ const LedgerBook: React.FC = () => {
             </div>
 
             {/* Mobile Horizontal Scroll Indicator */}
-            <div className="flex justify-center items-center gap-2 lg:hidden text-[#AAB4C1] text-[10px] font-bold uppercase tracking-widest">
+            <div className="flex justify-center items-center gap-2 lg:hidden text-[#AAB4C1] text-[10px] font-medium uppercase tracking-widest">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
                 Geser untuk detil
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="9 18 15 12 9 6"></polyline></svg>
