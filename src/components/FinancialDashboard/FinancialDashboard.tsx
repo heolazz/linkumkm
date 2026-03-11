@@ -81,16 +81,16 @@ const FinancialDashboard: React.FC = () => {
                         </div>
                         <div>
                             <div className="flex items-center gap-2">
-                                <h2 className="text-2xl md:text-4xl font-bold text-text-main tracking-tighter">
+                                <h2 className="text-2xl md:text-4xl font-bold text-black/70 tracking-tighter">
                                     {greeting},
                                 </h2>
                                 <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse mt-1"></span>
                             </div>
-                            <h2 className="text-xl md:text-3xl font-bold text-black tracking-tight -mt-1 uppercase">
+                            <h2 className="text-xl md:text-3xl font-bold text-black/70 tracking-tight -mt-1 uppercase">
                                 {userName}
                             </h2>
                             <div className="flex items-center gap-2 mt-1 bg-gray-100 w-fit px-2 py-0.5 rounded-lg border border-gray-200">
-                                <span className="text-[10px] md:text-xs font-bold text-black uppercase tracking-widest leading-none">
+                                <span className="text-[10px] md:text-xs font-bold text-black/80 uppercase tracking-widest leading-none">
                                     Status: Profit +12%
                                 </span>
                             </div>

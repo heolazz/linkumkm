@@ -92,7 +92,7 @@ const FinancialDashboardOverview: React.FC<DashboardOverviewProps> = ({ onNaviga
                                 </div>
                             </div>
                             <div className="relative z-10">
-                                <h4 className="text-[10px] md:text-[11px] font-bold text-[#738294] tracking-[0.2em] mb-3">{card.title}</h4>
+                                <h4 className="text-md md:text-lg font-medium text-[#738294] tracking-[0.05em] mb-1">{card.title}</h4>
                                 <p className={`text-xl md:text-2xl font-bold ${card.textColor} tracking-tight`}>{card.val}</p>
                             </div>
                         </div>
@@ -165,10 +165,10 @@ const FinancialDashboardOverview: React.FC<DashboardOverviewProps> = ({ onNaviga
                 <div className="flex flex-col gap-6">
                     {/* Net Profit Card */}
                     <div className="bg-white p-8 rounded-[2.5rem] border border-[#E9EFF5] shadow-sm relative overflow-hidden group active:scale-[0.98] transition-transform">
-                        <div className="flex justify-between items-start mb-10 relative z-10">
+                        <div className="flex justify-between items-start mb-8 relative z-10">
                             <div className="flex flex-col gap-1">
-                                <h4 className="text-[10px] font-bold uppercase tracking-[0.25em] text-text-muted">Net Profit</h4>
-                                <span className="text-[9px] font-bold text-text-muted">PERIODE MARET 2026</span>
+                                <h4 className="text-xs md:text-md font-bold uppercase tracking-[0.25em]">Net Profit</h4>
+                                <span className="text-xs md:text-xs font-bold">PERIODE MARET 2026</span>
                             </div>
                         </div>
                         <div className="relative z-10">
@@ -199,7 +199,7 @@ const FinancialDashboardOverview: React.FC<DashboardOverviewProps> = ({ onNaviga
                                 <div className={`w-14 h-14 flex items-center justify-center rounded-2xl ${item.color} group-active:scale-110 transition-transform overflow-hidden p-2`}>
                                     <img src={item.icon} alt={item.label} className="w-full h-full object-contain" />
                                 </div>
-                                <span className="text-[10px] font-bold text-black text-center tracking-wider">{item.label}</span>
+                                <span className="text-xs font-bold text-black/70 text-center">{item.label}</span>
                             </button>
                         ))}
                     </div>
