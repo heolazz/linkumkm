@@ -4,6 +4,7 @@ import ModulRegulerTab from '../components/UMKMSmart/ModulRegulerTab';
 import ModulRegulerDetail from '../components/UMKMSmart/ModulRegulerDetail';
 import ModulTematikTab from '../components/UMKMSmart/ModulTematikTab';
 import ModulTematikDetail from '../components/UMKMSmart/ModulTematikDetail';
+import FinancialDashboard from '../components/FinancialDashboard/FinancialDashboard';
 
 interface UMKMSmartPageProps {
     initialTab?: string;
@@ -14,7 +15,7 @@ const UMKMSmartPage: React.FC<UMKMSmartPageProps> = ({ initialTab, onNavigate })
     const [activeTab, setActiveTab] = useState(initialTab || 'Apa Itu UMKM Smart');
     const [selectedTematik, setSelectedTematik] = useState<any>(null);
     const [selectedReguler, setSelectedReguler] = useState<any>(null);
-    const tabs = ['Apa Itu UMKM Smart', 'Skoring', 'Modul Reguler', 'Modul Tematik'];
+    const tabs = ['Apa Itu UMKM Smart', 'Skoring', 'Dashboard Keuangan', 'Modul Reguler', 'Modul Tematik'];
 
     // Scroll to top when switching to/from details
     React.useEffect(() => {
@@ -278,6 +279,12 @@ const UMKMSmartPage: React.FC<UMKMSmartPageProps> = ({ initialTab, onNavigate })
                 {activeTab === 'Modul Tematik' && (
                     <div className="py-12 max-w-[1440px] mx-auto px-4">
                         <ModulTematikTab onModuleSelect={setSelectedTematik} />
+                    </div>
+                )}
+
+                {activeTab === 'Dashboard Keuangan' && (
+                    <div className="py-12 max-w-[1440px] mx-auto px-4">
+                        <FinancialDashboard />
                     </div>
                 )}
 
