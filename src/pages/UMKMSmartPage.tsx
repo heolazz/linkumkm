@@ -288,7 +288,7 @@ const UMKMSmartPage: React.FC<UMKMSmartPageProps> = ({ initialTab, onNavigate })
                     </div>
                 )}
 
-                {activeTab !== 'Apa Itu UMKM Smart' && activeTab !== 'Skoring' && activeTab !== 'Modul Reguler' && activeTab !== 'Modul Tematik' && (
+                {activeTab !== 'Apa Itu UMKM Smart' && activeTab !== 'Skoring' && activeTab !== 'Modul Reguler' && activeTab !== 'Modul Tematik' && activeTab !== 'Dashboard Keuangan' && (
                     <div className="py-24 text-center text-gray-400">
                         Konten untuk tab <span className="font-semibold text-gray-500">{activeTab}</span> sedang dalam pengembangan.
                     </div>
