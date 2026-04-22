@@ -123,7 +123,7 @@ const ModulRegulerDetail: React.FC<ModulRegulerDetailProps> = ({ module, onBack,
                     </p>
 
                     <div className="flex items-center gap-1.5 mb-5">
-                        <div className="flex text-[#ff7a00]">
+                        <div className="flex text-[#3080E3]">
                             {[1, 2, 3, 4].map(i => (
                                 <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                             ))}
@@ -137,7 +137,7 @@ const ModulRegulerDetail: React.FC<ModulRegulerDetailProps> = ({ module, onBack,
                             Tradisional
                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" /></svg>
                         </span>
-                        <span className="bg-[#fff0e5] text-[#ff7a00] text-[10px] font-bold px-3 py-1.5 rounded-md">
+                        <span className="bg-[#fff0e5] text-[#3080E3] text-[10px] font-bold px-3 py-1.5 rounded-md">
                             Manajemen Keuangan
                         </span>
                     </div>
@@ -146,7 +146,7 @@ const ModulRegulerDetail: React.FC<ModulRegulerDetailProps> = ({ module, onBack,
                         Dari Chat Jadi Cuan Optimalkan WhatsApp untuk Tingkatkan Penjualan UMKM
                     </p>
 
-                    <button className="bg-[#ff7a00] hover:bg-[#e66e00] text-white font-bold text-[14px] px-12 py-3.5 rounded-xl transition-all w-fit shadow-md hover:shadow-lg">
+                    <button className="bg-[#3080E3] hover:bg-[#2167c2] text-white font-bold text-[14px] px-12 py-3.5 rounded-xl transition-all w-fit shadow-md hover:shadow-lg">
                         Baca
                     </button>
                 </div>
@@ -235,10 +235,10 @@ const ModulRegulerDetail: React.FC<ModulRegulerDetailProps> = ({ module, onBack,
 
                 {/* Pagination */}
                 <div className="mt-12 flex justify-end items-center gap-2">
-                    <button className="w-8 h-8 rounded-lg bg-[#fff7ef] text-[#ff7a00] font-bold text-[13px] flex items-center justify-center">1</button>
+                    <button className="w-8 h-8 rounded-lg bg-[#fff7ef] text-[#3080E3] font-bold text-[13px] flex items-center justify-center">1</button>
                     <button className="w-8 h-8 rounded-lg bg-white border border-gray-100 text-gray-500 font-bold text-[13px] hover:bg-gray-50 transition-colors flex items-center justify-center">2</button>
                     <button className="w-8 h-8 rounded-lg bg-white border border-gray-100 text-gray-500 font-bold text-[13px] hover:bg-gray-50 transition-colors flex items-center justify-center">3</button>
-                    <button className="w-8 h-8 rounded-lg bg-white border border-gray-100 text-[#ff7a00] flex items-center justify-center hover:bg-gray-50 transition-colors">
+                    <button className="w-8 h-8 rounded-lg bg-white border border-gray-100 text-[#3080E3] flex items-center justify-center hover:bg-gray-50 transition-colors">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                     </button>
                 </div>

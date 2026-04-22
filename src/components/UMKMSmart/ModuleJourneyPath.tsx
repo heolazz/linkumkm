@@ -308,7 +308,7 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
                 )}
                 <div className="absolute top-0 bottom-0 w-[2px] bg-gray-100 rounded-full left-1/2 -translate-x-1/2 z-0"></div>
                 {/* Orange Progress Line (Dummy: 35% height for demo) */}
-                <div className="absolute top-0 w-[2px] bg-[#ff7a00] shadow-[0_0_10px_rgba(255,122,0,0.3)] rounded-full left-1/2 -translate-x-1/2 z-0 transition-all duration-1000" style={{ height: '35%' }}></div>
+                <div className="absolute top-0 w-[2px] bg-[#3080E3] shadow-[0_0_10px_rgba(48,128,227,0.3)] rounded-full left-1/2 -translate-x-1/2 z-0 transition-all duration-1000" style={{ height: '35%' }}></div>
 
                 {filteredLevels.map((level, lIdx) => (
                     <div key={`lvl-${lIdx}`} className="w-full flex flex-col items-center relative py-10">
@@ -320,7 +320,7 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
                                 {!level.locked && (
                                     <div className="mt-4 flex gap-2 md:gap-3">
                                         <div className="px-3 md:px-4 py-1.5 bg-[#f8f9fa] border border-gray-100 text-[#333] text-[10px] md:text-[11px] font-bold rounded-sm uppercase tracking-wider">{level.modules.length} Modul</div>
-                                        <button className="px-3 md:px-4 py-1.5 bg-[#ff7a00] text-white text-[10px] md:text-[11px] font-bold rounded-sm uppercase tracking-wider shadow-sm hover:bg-orange-500 transition-colors">Leveling</button>
+                                        <button className="px-3 md:px-4 py-1.5 bg-[#3080E3] text-white text-[10px] md:text-[11px] font-bold rounded-sm uppercase tracking-wider shadow-sm hover:bg-orange-500 transition-colors">Leveling</button>
                                     </div>
                                 )}
                             </div>
@@ -432,7 +432,7 @@ const ModuleJourneyPath: React.FC<ModuleJourneyPathProps> = ({ levels, onModuleS
 
                         <h3 className="text-white text-[32px] font-black uppercase tracking-tight text-center leading-[0.9] relative z-10">
                             MENJADI <br />
-                            <span className="text-[#ff7a00] drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]">UMKM MODERN</span>
+                            <span className="text-[#3080E3] drop-shadow-[0_2px_4px_rgba(0,0,0,0.1)]">UMKM MODERN</span>
                         </h3>
                         <div className="mt-6 flex flex-col items-center relative z-10">
                             <div className="w-12 h-1 bg-white/30 rounded-full mb-4"></div>

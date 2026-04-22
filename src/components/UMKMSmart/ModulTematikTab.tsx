@@ -152,10 +152,10 @@ const ModulTematikTab = ({ onModuleSelect }: { onModuleSelect: (module: any) => 
 
                 {/* Pagination (Dummy) */}
                 <div className="flex justify-center items-center gap-2 mt-8">
-                    <button className="w-8 h-8 flex items-center justify-center bg-[#fff0d9] text-[#ff7a00] rounded-sm font-semibold text-[13px]">1</button>
+                    <button className="w-8 h-8 flex items-center justify-center bg-[#fff0d9] text-[#3080E3] rounded-sm font-semibold text-[13px]">1</button>
                     <button className="w-8 h-8 flex items-center justify-center bg-transparent text-gray-500 hover:bg-gray-100 rounded-sm font-semibold text-[13px]">2</button>
                     <button className="w-8 h-8 flex items-center justify-center bg-transparent text-gray-500 hover:bg-gray-100 rounded-sm font-semibold text-[13px]">3</button>
-                    <button className="w-8 h-8 flex items-center justify-center bg-transparent border border-gray-200 text-[#ff7a00] hover:bg-orange-50 rounded-sm">
+                    <button className="w-8 h-8 flex items-center justify-center bg-transparent border border-gray-200 text-[#3080E3] hover:bg-orange-50 rounded-sm">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                     </button>
                 </div>

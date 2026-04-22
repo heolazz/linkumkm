@@ -80,7 +80,7 @@ const ChatPakarPage: React.FC<ChatPakarPageProps> = ({ coach, onBack }) => {
                             className="w-full bg-[#f8fbff] border border-gray-100 rounded-xl px-5 py-3 text-[14px] outline-none focus:border-[#0070c0] transition-all"
                         />
                     </div>
-                    <button className="bg-[#ff7a00] p-3 rounded-xl text-white shadow-md active:scale-95 transition-all">
+                    <button className="bg-[#3080E3] p-3 rounded-xl text-white shadow-md active:scale-95 transition-all">
                         <svg className="w-5 h-5 transform rotate-90" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
                         </svg>

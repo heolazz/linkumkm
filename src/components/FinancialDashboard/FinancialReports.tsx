@@ -31,7 +31,7 @@ const FinancialReports: React.FC = () => {
         }, {})
     );
 
-    const COLORS = ['#0059a4', '#10b981', '#f43f5e', '#f59e0b', '#ff7a00', '#8b5cf6'];
+    const COLORS = ['#0059a4', '#10b981', '#f43f5e', '#f59e0b', '#3080E3', '#8b5cf6'];
 
     const formatCurrency = (val: number) => {
         return new Intl.NumberFormat('id-ID', {

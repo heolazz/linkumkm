@@ -25,7 +25,7 @@ const ModuleCard = ({ module, locked = false, onSelect }: { module: any, locked?
             {/* Bottom Section (Details) */}
             <div className="p-5 flex flex-col flex-1 justify-between bg-white pl-4">
                 <div>
-                    <h4 className="text-[15px] font-bold text-[#333] mb-3 line-clamp-2 leading-snug group-hover/card:text-[#ff7a00] transition-colors">
+                    <h4 className="text-[15px] font-bold text-[#333] mb-3 line-clamp-2 leading-snug group-hover/card:text-[#3080E3] transition-colors">
                         {module.title}
                     </h4>
                     <span className="inline-block text-[9px] text-[#333] font-medium bg-[#f5f5f5] px-2 py-1 rounded-sm uppercase tracking-widest mb-4">
@@ -180,7 +180,7 @@ const ModulRegulerTab = ({ onModuleSelect }: { onModuleSelect?: (module: any) =>
                     <button
                         onClick={() => setViewMode('journey')}
                         className={`flex items-center gap-2 px-4 md:px-6 py-2 md:py-2.5 rounded-[12px] md:rounded-[14px] text-[12px] md:text-[13px] font-bold transition-all ${viewMode === 'journey'
-                            ? 'bg-[#ff7a00] text-white shadow-lg'
+                            ? 'bg-[#3080E3] text-white shadow-lg'
                             : 'text-gray-500 hover:bg-gray-50'
                             }`}
                     >
@@ -325,7 +325,7 @@ const ModulRegulerTab = ({ onModuleSelect }: { onModuleSelect?: (module: any) =>
                                         <div className="flex items-center gap-2 md:gap-3 w-full sm:w-auto">
                                             {!levelData.locked && (
                                                 <>
-                                                    <button className="flex-1 sm:flex-none text-[11px] md:text-[12px] text-white font-semibold bg-[#ff7a00] hover:bg-[#e66e00] px-4 py-2 rounded-lg transition-colors shadow-sm whitespace-nowrap">
+                                                    <button className="flex-1 sm:flex-none text-[11px] md:text-[12px] text-white font-semibold bg-[#3080E3] hover:bg-[#2167c2] px-4 py-2 rounded-lg transition-colors shadow-sm whitespace-nowrap">
                                                         Post Test
                                                     </button>
                                                     <button className="flex-1 sm:flex-none text-[11px] md:text-[12px] text-[#0070c0] font-semibold hover:bg-blue-50 border border-[#0070c0] px-4 py-2 rounded-lg flex items-center justify-center gap-1 transition-colors bg-white whitespace-nowrap">

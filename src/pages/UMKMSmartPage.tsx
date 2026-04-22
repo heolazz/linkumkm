@@ -151,12 +151,12 @@ const UMKMSmartPage: React.FC<UMKMSmartPageProps> = ({ initialTab, onNavigate })
                             onClick={() => {
                                 setActiveTab(tab);
                             }}
-                            className={`py-3 md:py-4 px-4 md:px-6 text-[14px] md:text-[15px] font-bold transition-all relative whitespace-nowrap ${activeTab === tab ? 'text-[#ff7a00]' : 'text-[#738294] hover:text-[#333]'
+                            className={`py-3 md:py-4 px-4 md:px-6 text-[14px] md:text-[15px] font-bold transition-all relative whitespace-nowrap ${activeTab === tab ? 'text-[#3080E3]' : 'text-[#738294] hover:text-[#333]'
                                 }`}
                         >
                             {tab}
                             {activeTab === tab && (
-                                <div className="absolute bottom-[-1px] left-0 w-full h-[3px] bg-[#ff7a00]" />
+                                <div className="absolute bottom-[-1px] left-0 w-full h-[3px] bg-[#3080E3]" />
                             )}
                         </button>
                     ))}

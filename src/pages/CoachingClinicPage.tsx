@@ -110,7 +110,7 @@ const CoachingClinicPage: React.FC<CoachingClinicPageProps> = ({ onChatSelect })
 
                                 <button
                                     onClick={() => onChatSelect?.(coach)}
-                                    className="mt-auto w-full bg-[#ff7a00] hover:bg-[#e66e00] text-white py-2.5 md:py-3 rounded-lg md:rounded-xl font-bold flex items-center justify-center gap-1.5 md:gap-2 transition-all active:scale-95 text-[11px] md:text-[13px] shadow-sm"
+                                    className="mt-auto w-full bg-[#3080E3] hover:bg-[#2167c2] text-white py-2.5 md:py-3 rounded-lg md:rounded-xl font-bold flex items-center justify-center gap-1.5 md:gap-2 transition-all active:scale-95 text-[11px] md:text-[13px] shadow-sm"
                                 >
                                     <span className="hidden sm:inline">Chat sekarang</span>
                                     <span className="inline sm:hidden">Chat</span>
@@ -125,10 +125,10 @@ const CoachingClinicPage: React.FC<CoachingClinicPageProps> = ({ onChatSelect })
 
                 {/* Pagination */}
                 <div className="flex justify-center md:justify-end items-center gap-2 mt-12 mb-8">
-                    <button className="w-8 h-8 flex items-center justify-center bg-[#fff0d9] text-[#ff7a00] rounded text-[13px] font-bold">1</button>
+                    <button className="w-8 h-8 flex items-center justify-center bg-[#fff0d9] text-[#3080E3] rounded text-[13px] font-bold">1</button>
                     <button className="w-8 h-8 flex items-center justify-center bg-transparent text-gray-600 hover:bg-gray-100 rounded text-[13px] font-bold">2</button>
                     <button className="w-8 h-8 flex items-center justify-center bg-transparent text-gray-600 hover:bg-gray-100 rounded text-[13px] font-bold">3</button>
-                    <button className="w-8 h-8 flex items-center justify-center bg-transparent border border-gray-200 text-[#ff7a00] hover:bg-[#fff0d9] rounded text-[13px]">
+                    <button className="w-8 h-8 flex items-center justify-center bg-transparent border border-gray-200 text-[#3080E3] hover:bg-[#fff0d9] rounded text-[13px]">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
                     </button>
                 </div>

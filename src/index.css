@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #ff7a00;
-  --color-primary-hover: #e66e00;
+  --color-primary: #3080E3;
+  --color-primary-hover: #2167c2;
   --color-secondary: #0059a4;
   --color-secondary-hover: #004a89;
   --color-accent: #00c2ff;

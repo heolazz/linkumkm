@@ -127,7 +127,11 @@ const PelatihanCard = ({ data, onClick }: { data: any, onClick: () => void }) =>
     );
 };
 
-const PelatihanOnline: React.FC = () => {
+interface PelatihanOnlineProps {
+    onSelect?: (data: any) => void;
+}
+
+const PelatihanOnline: React.FC<PelatihanOnlineProps> = ({ onSelect }) => {
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
     const [selectedDateLabel, setSelectedDateLabel] = useState('Pilih Tanggal');
     const [selectedTraining, setSelectedTraining] = useState<any>(null);
@@ -141,8 +145,12 @@ const PelatihanOnline: React.FC = () => {
     };
 
     const handleOpenModal = (training: any) => {
-        setSelectedTraining(training);
-        setIsModalOpen(true);
+        if (onSelect) {
+            onSelect(training);
+        } else {
+            setSelectedTraining(training);
+            setIsModalOpen(true);
+        }
     };
 
     const handleCloseModal = () => {
@@ -211,7 +219,7 @@ const PelatihanOnline: React.FC = () => {
                             />
                         </div>
 
-                        <button className="bg-[#ff7a00] hover:bg-[#e06b00] text-white font-bold text-[14px] px-8 py-3 sm:py-2.5 rounded-full transition-colors w-full sm:w-auto shadow-sm mt-2 sm:mt-0">
+                        <button className="bg-[#3080E3] hover:bg-[#e06b00] text-white font-bold text-[14px] px-8 py-3 sm:py-2.5 rounded-full transition-colors w-full sm:w-auto shadow-sm mt-2 sm:mt-0">
                             Search
                         </button>
                     </div>

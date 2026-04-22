@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 import IndonesiaMap from '../components/RumahBUMN/IndonesiaMap';
 import PelatihanOnline from '../components/RumahBUMN/PelatihanOnline';
 import PelatihanOffline from '../components/RumahBUMN/PelatihanOffline';
+import PelatihanDetail from '../components/RumahBUMN/PelatihanDetail';
 
 const RumahBUMN: React.FC = () => {
     const [activeTab, setActiveTab] = useState('Jadwal Pelatihan Offline');
+    const [selectedPelatihan, setSelectedPelatihan] = useState<any>(null);
 
     const tabs = ['Lokasi Rumah BUMN', 'Jadwal Pelatihan Online', 'Jadwal Pelatihan Offline'];
+
+    if (selectedPelatihan) {
+        return <PelatihanDetail data={selectedPelatihan} onBack={() => setSelectedPelatihan(null)} />;
+    }
 
     return (
         <div className="bg-white min-h-screen pt-24 pb-20">
@@ -20,22 +26,18 @@ const RumahBUMN: React.FC = () => {
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
-                            className={`text-[14px] md:text-[15px] font-bold transition-all relative pb-2 ${activeTab === tab ? 'text-[#ff7a00]' : 'text-[#738294] hover:text-[#333]'
+                            className={`text-[14px] md:text-[15px] font-bold transition-all relative pb-2 ${activeTab === tab ? 'text-[#3080E3]' : 'text-[#738294] hover:text-[#333]'
                                 }`}
                         >
                             {tab}
                             {activeTab === tab && (
-                                <div className="absolute bottom-[-2px] left-0 w-full h-[3px] bg-[#ff7a00] rounded-full" />
+                                <div className="absolute bottom-[-2px] left-0 w-full h-[3px] bg-[#3080E3] rounded-full" />
                             )}
                         </button>
                     ))}
                 </div>
 
-                {/* Main Content Info - Keep it visible for both tabs as in the design or hide it? 
-                    Based on the design, the illustration seems to be for the whole page or just "Lokasi". 
-                    We will keep it for both unless it gets too long, but let's hide it for training to give more space if preferred. 
-                    Wait, looking at the user's screenshot, it's visible on the Jadwal Pelatihan Online tab.
-                */}
+                {/* Main Content Info */}
                 {(activeTab === 'Lokasi Rumah BUMN' || activeTab === 'Jadwal Pelatihan Online') && (
                     <div className="flex flex-col lg:flex-row items-center gap-12 mb-20 lg:mb-24">
                         <div className="flex-1">
@@ -66,13 +68,13 @@ const RumahBUMN: React.FC = () => {
 
                 {activeTab === 'Jadwal Pelatihan Online' && (
                     <div className="animate-fade-in-up">
-                        <PelatihanOnline />
+                        <PelatihanOnline onSelect={(data) => setSelectedPelatihan(data)} />
                     </div>
                 )}
 
                 {activeTab === 'Jadwal Pelatihan Offline' && (
                     <div className="animate-fade-in-up">
-                        <PelatihanOffline />
+                        <PelatihanOffline onSelect={(data) => setSelectedPelatihan(data)} />
                     </div>
                 )}
             </div>

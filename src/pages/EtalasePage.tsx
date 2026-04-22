@@ -98,7 +98,7 @@ const EtalasePage: React.FC = () => {
                             <p className="text-[14px] text-gray-500">Promosikan produk dan tingkatkan penjualan Anda bersama kami</p>
                         </div>
                     </div>
-                    <button className="text-[#ff7a00] font-bold text-[15px] hover:translate-x-1 transition-transform flex items-center gap-2 group whitespace-nowrap">
+                    <button className="text-[#3080E3] font-bold text-[15px] hover:translate-x-1 transition-transform flex items-center gap-2 group whitespace-nowrap">
                         Jual Produk Anda disini <span className="text-[20px] leading-none">›</span>
                     </button>
                 </div>
@@ -151,7 +151,7 @@ const EtalasePage: React.FC = () => {
                                     <h4 className="text-[13px] font-bold text-[#333] line-clamp-2 text-left mb-2 h-10 leading-snug">
                                         {product.title}
                                     </h4>
-                                    <p className="text-[14px] font-black text-gray-700 group-hover:text-[#ff7a00] transition-colors mb-3">{product.price}</p>
+                                    <p className="text-[14px] font-black text-gray-700 group-hover:text-[#3080E3] transition-colors mb-3">{product.price}</p>
                                     <div className="mt-auto flex items-center gap-1.5 pt-2 border-t border-gray-50 w-full text-left">
                                         <div className="w-3.5 h-3.5 text-gray-400">
                                             <svg fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" /></svg>
@@ -168,7 +168,7 @@ const EtalasePage: React.FC = () => {
                         <button className="w-8 h-8 flex items-center justify-center bg-[#e4f3fb] text-[#0070c0] rounded-lg text-[13px] font-bold">1</button>
                         <button className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-lg text-[13px] font-bold">2</button>
                         <button className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-gray-100 rounded-lg text-[13px] font-bold">3</button>
-                        <button className="w-8 h-8 flex items-center justify-center text-[#ff7a00] border border-gray-200 hover:bg-orange-50 rounded-lg">
+                        <button className="w-8 h-8 flex items-center justify-center text-[#3080E3] border border-gray-200 hover:bg-orange-50 rounded-lg">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
                         </button>
                     </div>

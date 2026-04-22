@@ -404,12 +404,12 @@ const MediaPage: React.FC = () => {
                         <button
                             key={tab}
                             onClick={() => setActiveTab(tab)}
-                            className={`text-[15px] font-bold transition-all relative pb-2 ${activeTab === tab ? 'text-[#ff7a00]' : 'text-[#738294] hover:text-[#333]'
+                            className={`text-[15px] font-bold transition-all relative pb-2 ${activeTab === tab ? 'text-[#3080E3]' : 'text-[#738294] hover:text-[#333]'
                                 }`}
                         >
                             {tab}
                             {activeTab === tab && (
-                                <div className="absolute bottom-[-2px] left-0 w-full h-[3px] bg-[#ff7a00] rounded-full" />
+                                <div className="absolute bottom-[-2px] left-0 w-full h-[3px] bg-[#3080E3] rounded-full" />
                             )}
                         </button>
                     ))}
@@ -460,7 +460,7 @@ const MediaPage: React.FC = () => {
                                 )}
                             </div>
                             <div className="w-full md:w-1/2 space-y-3 md:space-y-4 text-left">
-                                <span className="text-[#ff7a00] font-bold text-[11px] md:text-sm px-3 py-1 bg-[#ff7a00]/10 rounded-full inline-block">Trending</span>
+                                <span className="text-[#3080E3] font-bold text-[11px] md:text-sm px-3 py-1 bg-[#3080E3]/10 rounded-full inline-block">Trending</span>
                                 <h4 className="text-lg md:text-2xl font-bold  text-[#333] leading-tight hover:text-[#0070c0] cursor-pointer transition-colors">
                                     {currentTrending.title}
                                 </h4>

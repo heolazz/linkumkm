@@ -128,7 +128,7 @@ const SkoringTab = ({ onNavigate }: { onNavigate?: (tab: string) => void }) => {
                                 </div>
                                 <span className="text-xs md:text-sm font-medium text-gray-700 leading-tight">Hasil Sertifikat Penilaian Anda</span>
                             </div>
-                            <button className="bg-[#ff7a00] hover:bg-[#e66e00] text-white text-[11px] font-bold py-2.5 px-5 rounded-lg transition-all active:scale-95 shadow-sm">
+                            <button className="bg-[#3080E3] hover:bg-[#2167c2] text-white text-[11px] font-bold py-2.5 px-5 rounded-lg transition-all active:scale-95 shadow-sm">
                                 Lihat Sertifikat
                             </button>
                         </div>
@@ -217,11 +217,11 @@ const SkoringTab = ({ onNavigate }: { onNavigate?: (tab: string) => void }) => {
                         <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                             <button
                                 onClick={() => onNavigate?.('Mulai Skoring')}
-                                className="flex-1 border border-[#ff7a00] text-[#ff7a00] hover:bg-[#fff5eb] font-bold text-sm md:text-md py-3 rounded-xl transition-all active:scale-95 order-2 sm:order-1"
+                                className="flex-1 border border-[#3080E3] text-[#3080E3] hover:bg-[#fff5eb] font-bold text-sm md:text-md py-3 rounded-xl transition-all active:scale-95 order-2 sm:order-1"
                             >
                                 Skoring Ulang
                             </button>
-                            <button className="flex-1 bg-[#ff7a00] hover:bg-[#e66e00] text-white font-bold text-sm md:text-md py-3 rounded-xl transition-all active:scale-95 shadow-md hover:shadow-lg order-1 sm:order-2">
+                            <button className="flex-1 bg-[#3080E3] hover:bg-[#2167c2] text-white font-bold text-sm md:text-md py-3 rounded-xl transition-all active:scale-95 shadow-md hover:shadow-lg order-1 sm:order-2">
                                 Pelajari Modul
                             </button>
                         </div>
@@ -322,7 +322,7 @@ const SkoringTab = ({ onNavigate }: { onNavigate?: (tab: string) => void }) => {
                                     </div>
                                 </div>
 
-                                <button className="w-full border border-[#ff7a00] text-[#ff7a00] hover:bg-[#fff5eb] font-bold text-[12px] py-2.5 rounded-xl transition-all active:scale-[0.98]">
+                                <button className="w-full border border-[#3080E3] text-[#3080E3] hover:bg-[#fff5eb] font-bold text-[12px] py-2.5 rounded-xl transition-all active:scale-[0.98]">
                                     Lihat Sertifikat
                                 </button>
                             </div>
@@ -371,7 +371,7 @@ const SkoringTab = ({ onNavigate }: { onNavigate?: (tab: string) => void }) => {
                                         </ol>
                                     </td>
                                     <td className="py-4 px-6 text-center">
-                                        <button className="border border-[#ff7a00] text-[#ff7a00] hover:bg-[#fff5eb] font-semibold text-[11px] py-1.5 px-4 rounded-lg transition-colors whitespace-nowrap">
+                                        <button className="border border-[#3080E3] text-[#3080E3] hover:bg-[#fff5eb] font-semibold text-[11px] py-1.5 px-4 rounded-lg transition-colors whitespace-nowrap">
                                             Lihat Sertifikat
                                         </button>
                                     </td>

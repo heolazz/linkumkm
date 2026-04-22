@@ -57,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                         >
                             <div className="absolute inset-0 bg-black/5"></div>
                             <div
-                                className={`absolute top-0 left-0 h-full bg-[#ff7a00] transition-all ease-linear ${currentBanner === index ? 'w-full duration-[5000ms]' : 'w-0 duration-0'
+                                className={`absolute top-0 left-0 h-full bg-[#3080E3] transition-all ease-linear ${currentBanner === index ? 'w-full duration-[5000ms]' : 'w-0 duration-0'
                                     }`}
                             />
                         </button>

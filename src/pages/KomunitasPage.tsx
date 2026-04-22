@@ -85,7 +85,7 @@ const KomunitasPage: React.FC = () => {
                         </div>
                         <span className="text-[#738294] font-bold text-[15px]">Apakah Anda Ingin membuat komunitas?</span>
                     </div>
-                    <button className="text-[#ff7a00] font-bold text-[15px] hover:underline flex items-center gap-2 transition-all">
+                    <button className="text-[#3080E3] font-bold text-[15px] hover:underline flex items-center gap-2 transition-all">
                         Buat Komunitas Anda disini
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                     </button>

@@ -89,7 +89,7 @@ const ConsultationSection: React.FC<ConsultationSectionProps> = ({ onNavigate })
 
                                     <button
                                         onClick={() => onNavigate?.('Chat Pakar', expert)}
-                                        className="w-full mt-auto bg-[#ff7a00] hover:bg-[#e66e00] text-white py-2.5 md:py-3 rounded-lg md:rounded-xl font-bold flex items-center justify-center gap-1.5 md:gap-2 transition-all active:scale-95 text-[11px] md:text-[13px] shadow-sm"
+                                        className="w-full mt-auto bg-[#3080E3] hover:bg-[#2167c2] text-white py-2.5 md:py-3 rounded-lg md:rounded-xl font-bold flex items-center justify-center gap-1.5 md:gap-2 transition-all active:scale-95 text-[11px] md:text-[13px] shadow-sm"
                                     >
                                         Chat sekarang
                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">

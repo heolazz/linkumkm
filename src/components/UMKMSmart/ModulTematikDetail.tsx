@@ -115,7 +115,7 @@ const ModulTematikDetail: React.FC<ModulTematikDetailProps> = ({ module, onBack 
                     </p>
 
                     <div>
-                        <button className="bg-[#ff7a00] hover:bg-[#e66a00] text-white font-bold py-2.5 px-10 rounded-lg shadow-sm transition-colors text-[14px]">
+                        <button className="bg-[#3080E3] hover:bg-[#e66a00] text-white font-bold py-2.5 px-10 rounded-lg shadow-sm transition-colors text-[14px]">
                             Baca
                         </button>
                     </div>
@@ -159,7 +159,7 @@ const ModulTematikDetail: React.FC<ModulTematikDetailProps> = ({ module, onBack 
 
                 <div className="flex justify-end">
                     <button
-                        className={`py-2 px-12 rounded-lg font-semibold text-[14px] transition-colors ${reviewText.length > 0 ? 'bg-[#ff7a00] text-white hover:bg-[#e66a00]' : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                        className={`py-2 px-12 rounded-lg font-semibold text-[14px] transition-colors ${reviewText.length > 0 ? 'bg-[#3080E3] text-white hover:bg-[#e66a00]' : 'bg-gray-200 text-gray-500 cursor-not-allowed'
                             }`}
                         disabled={reviewText.length === 0}
                     >

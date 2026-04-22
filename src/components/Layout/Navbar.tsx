@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeTab, onNavigate }) => {
         <div className="max-w-[1440px] mx-auto px-5 flex justify-between items-center w-full">
           <div className="flex items-center">
             <img
-              src="/logo/logo-linkumkm.png"
+              src="/logo/logo-linkumkm-02.png"
               alt="LinkUMKM Logo"
               className="h-10 w-auto object-contain cursor-pointer active:scale-95 transition-transform"
               onClick={() => onNavigate('Beranda')}
@@ -48,9 +48,9 @@ const Navbar: React.FC<NavbarProps> = ({ activeTab, onNavigate }) => {
                 >
                   {item}
                   {activeTab === item && (
-                    <div className="absolute bottom-[-2px] left-0 w-full h-[4px] bg-[#ff7a00] rounded-full"></div>
+                    <div className="absolute bottom-[-2px] left-0 w-full h-[4px] bg-[#3080E3] rounded-full"></div>
                   )}
-                  <div className={`absolute bottom-[-2px] left-0 w-0 h-[4px] bg-[#ff7a00] rounded-full transition-all duration-300 group-hover:w-full ${activeTab === item ? 'hidden' : 'block opacity-30'}`}></div>
+                  <div className={`absolute bottom-[-2px] left-0 w-0 h-[4px] bg-[#3080E3] rounded-full transition-all duration-300 group-hover:w-full ${activeTab === item ? 'hidden' : 'block opacity-30'}`}></div>
                 </a>
               </li>
             ))}
@@ -59,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeTab, onNavigate }) => {
           <div className="flex items-center gap-2 sm:gap-4">
             <button
               onClick={() => { setIsSearchOpen(!isSearchOpen); setIsMobileMenuOpen(false); }}
-              className={`p-2 rounded-full transition-all duration-300 ${isSearchOpen ? 'bg-gray-100 text-[#ff7a00]' : 'text-[#738294] hover:text-[#333]'}`}
+              className={`p-2 rounded-full transition-all duration-300 ${isSearchOpen ? 'bg-gray-100 text-[#3080E3]' : 'text-[#738294] hover:text-[#333]'}`}
             >
               {isSearchOpen ? (
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -67,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeTab, onNavigate }) => {
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               )}
             </button>
-            <button className="hidden sm:block bg-[#ff7a00] hover:bg-[#e66e00] text-white px-7 py-2.5 rounded-xl font-bold text-sm shadow-[0_4px_12px_rgba(255,122,0,0.2)] transition-all active:scale-95">
+            <button className="hidden sm:block bg-[#3080E3] hover:bg-[#2167c2] text-white px-7 py-2.5 rounded-xl font-bold text-sm shadow-[0_4px_12px_rgba(48,128,227,0.2)] transition-all active:scale-95">
               Masuk / Daftar
             </button>
 
@@ -101,7 +101,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeTab, onNavigate }) => {
               {item}
             </button>
           ))}
-          <button className="sm:hidden mt-4 w-full bg-[#ff7a00] hover:bg-[#e66e00] text-white px-7 py-3 rounded-xl font-bold text-sm shadow-[0_4px_12px_rgba(255,122,0,0.2)] transition-all active:scale-95">
+          <button className="sm:hidden mt-4 w-full bg-[#3080E3] hover:bg-[#2167c2] text-white px-7 py-3 rounded-xl font-bold text-sm shadow-[0_4px_12px_rgba(48,128,227,0.2)] transition-all active:scale-95">
             Masuk / Daftar
           </button>
         </div>
@@ -118,10 +118,10 @@ const Navbar: React.FC<NavbarProps> = ({ activeTab, onNavigate }) => {
             <input
               type="text"
               placeholder="Cari berita, modul, atau layanan LinkUMKM..."
-              className="w-full h-16 pl-16 pr-32 bg-[#F8FBFF] border-2 border-[#E9EFF5] focus:border-[#ff7a00] rounded-2xl outline-none text-lg font-medium text-[#202E3E] transition-all placeholder-[#AAB4C1] shadow-inner"
+              className="w-full h-16 pl-16 pr-32 bg-[#F8FBFF] border-2 border-[#E9EFF5] focus:border-[#3080E3] rounded-2xl outline-none text-lg font-medium text-[#202E3E] transition-all placeholder-[#AAB4C1] shadow-inner"
               autoFocus={isSearchOpen}
             />
-            <button className="absolute right-4 bg-[#ff7a00] hover:bg-[#e66e00] text-white px-8 py-3 rounded-xl font-bold transition-all shadow-md active:scale-95">
+            <button className="absolute right-4 bg-[#3080E3] hover:bg-[#2167c2] text-white px-8 py-3 rounded-xl font-bold transition-all shadow-md active:scale-95">
               Cari
             </button>
           </div>

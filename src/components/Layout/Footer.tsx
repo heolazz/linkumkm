@@ -13,7 +13,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                     <div className="xl:w-[320px] shrink-0">
                         <div className="mb-6">
                             <img
-                                src="/logo/logo-linkumkm.png"
+                                src="/logo/logo-linkumkm-02.png"
                                 alt="LinkUMKM Logo"
                                 className="h-10 w-auto object-contain cursor-pointer transition-transform active:scale-95"
                                 onClick={() => onNavigate('Beranda')}

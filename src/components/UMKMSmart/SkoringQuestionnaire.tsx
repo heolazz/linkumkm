@@ -402,7 +402,7 @@ const SkoringQuestionnaire = ({ onFinish }: { onFinish: () => void }) => {
                 </div>
                 <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div
-                        className="h-full bg-[#ff7a00] transition-all duration-500 ease-out"
+                        className="h-full bg-[#3080E3] transition-all duration-500 ease-out"
                         style={{ width: `${progress}%` }}
                     />
                 </div>
@@ -485,7 +485,7 @@ const SkoringQuestionnaire = ({ onFinish }: { onFinish: () => void }) => {
 
                         <button
                             onClick={handleNext}
-                            className="bg-[#ff7a00] hover:bg-[#e66e00] text-white px-10 py-3.5 rounded-xl font-bold text-sm shadow-[0_10px_20px_rgba(255,122,0,0.2)] transition-all active:scale-95 flex items-center gap-2"
+                            className="bg-[#3080E3] hover:bg-[#2167c2] text-white px-10 py-3.5 rounded-xl font-bold text-sm shadow-[0_10px_20px_rgba(48,128,227,0.2)] transition-all active:scale-95 flex items-center gap-2"
                         >
                             {currentSegmentIndex === questionnaireData.length - 1 ? 'Selesaikan Skoring' : 'Lanjutkan'}
                             {currentSegmentIndex !== questionnaireData.length - 1 && (
