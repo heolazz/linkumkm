@@ -4,9 +4,10 @@ interface ModulRegulerDetailProps {
     module: any;
     onBack: () => void;
     onTabChange?: (tab: string) => void;
+    onRead?: () => void;
 }
 
-const ModulRegulerDetail: React.FC<ModulRegulerDetailProps> = ({ module, onBack, onTabChange }) => {
+const ModulRegulerDetail: React.FC<ModulRegulerDetailProps> = ({ module, onBack, onTabChange, onRead }) => {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
 
@@ -94,14 +95,14 @@ const ModulRegulerDetail: React.FC<ModulRegulerDetailProps> = ({ module, onBack,
                     <div className="flex justify-between w-full items-start z-10">
                         <img src="logo/logo_linkumkm_white.png" alt="LinkUMKM" className="h-5 opacity-90" />
                         <div className="bg-white/30 backdrop-blur-md text-white text-[11px] font-bold px-4 py-2 rounded-sm uppercase tracking-wider">
-                            MANAJEMEN KEUANGAN
+                            {module.category}
                         </div>
                     </div>
 
                     <div className="mt-12 z-10 max-w-[90%]">
                         <div className="w-10 h-[1.5px] bg-white/60 mb-6"></div>
                         <h1 className="text-white font-bold text-[24px] leading-[1.2] mb-4">
-                            Dari Chat Jadi Cuan Optimalkan WhatsApp untuk Tingkatkan Penjualan UMKM
+                            {module.title}
                         </h1>
                     </div>
 
@@ -116,14 +117,14 @@ const ModulRegulerDetail: React.FC<ModulRegulerDetailProps> = ({ module, onBack,
                 {/* Right: Text Details */}
                 <div className="w-full md:w-7/12 bg-white p-8 md:pl-12 flex flex-col justify-start">
                     <h2 className="text-[20px] font-bold text-[#1c2127] mb-2 leading-tight">
-                        Dari Chat Jadi Cuan Optimalkan WhatsApp untuk Tingkatkan Penjualan UMKM
+                        {module.title}
                     </h2>
                     <p className="text-[13px] text-gray-400 font-medium mb-5">
                         Rabu, 26 November 2025 | 17:09 WIB
                     </p>
 
                     <div className="flex items-center gap-1.5 mb-5">
-                        <div className="flex text-[#3080E3]">
+                        <div className="flex text-yellow-400">
                             {[1, 2, 3, 4].map(i => (
                                 <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
                             ))}
@@ -137,16 +138,19 @@ const ModulRegulerDetail: React.FC<ModulRegulerDetailProps> = ({ module, onBack,
                             Tradisional
                             <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" /></svg>
                         </span>
-                        <span className="bg-[#fff0e5] text-[#3080E3] text-[10px] font-bold px-3 py-1.5 rounded-md">
-                            Manajemen Keuangan
+                        <span className="bg-[#e3f2fd] text-[#3080E3] text-[10px] font-bold px-3 py-1.5 rounded-md">
+                            {module.category}
                         </span>
                     </div>
 
                     <p className="text-[13px] text-gray-500 font-medium mb-8 leading-relaxed max-w-xl">
-                        Dari Chat Jadi Cuan Optimalkan WhatsApp untuk Tingkatkan Penjualan UMKM
+                        {module.title}
                     </p>
 
-                    <button className="bg-[#3080E3] hover:bg-[#2167c2] text-white font-bold text-[14px] px-12 py-3.5 rounded-xl transition-all w-fit shadow-md hover:shadow-lg">
+                    <button
+                        onClick={onRead}
+                        className="bg-[#3080E3] hover:bg-[#2167c2] text-white font-bold text-[14px] px-12 py-3.5 rounded-xl transition-all w-fit shadow-md hover:shadow-lg active:scale-95"
+                    >
                         Baca
                     </button>
                 </div>

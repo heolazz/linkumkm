@@ -5,6 +5,7 @@ import ModulRegulerDetail from '../components/UMKMSmart/ModulRegulerDetail';
 import ModulTematikTab from '../components/UMKMSmart/ModulTematikTab';
 import ModulTematikDetail from '../components/UMKMSmart/ModulTematikDetail';
 import FinancialDashboard from '../components/FinancialDashboard/FinancialDashboard';
+import ModuleReader from '../components/UMKMSmart/ModuleReader';
 
 interface UMKMSmartPageProps {
     initialTab?: string;
@@ -15,6 +16,7 @@ const UMKMSmartPage: React.FC<UMKMSmartPageProps> = ({ initialTab, onNavigate })
     const [activeTab, setActiveTab] = useState(initialTab || 'Apa Itu UMKM Smart');
     const [selectedTematik, setSelectedTematik] = useState<any>(null);
     const [selectedReguler, setSelectedReguler] = useState<any>(null);
+    const [readingModule, setReadingModule] = useState<any>(null);
     const tabs = ['Apa Itu UMKM Smart', 'Skoring', 'Dashboard Keuangan', 'Modul Reguler', 'Modul Tematik'];
 
     // Scroll to top when switching to/from details
@@ -77,10 +79,18 @@ const UMKMSmartPage: React.FC<UMKMSmartPageProps> = ({ initialTab, onNavigate })
         }
     ];
 
+    if (readingModule) {
+        return <ModuleReader module={readingModule} onClose={() => setReadingModule(null)} />;
+    }
+
     if (selectedTematik) {
         return (
             <div className="bg-white min-h-screen pt-20 pb-20 overflow-hidden">
-                <ModulTematikDetail module={selectedTematik} onBack={() => setSelectedTematik(null)} />
+                <ModulTematikDetail
+                    module={selectedTematik}
+                    onBack={() => setSelectedTematik(null)}
+                    onRead={() => setReadingModule(selectedTematik)}
+                />
             </div>
         );
     }
@@ -92,6 +102,7 @@ const UMKMSmartPage: React.FC<UMKMSmartPageProps> = ({ initialTab, onNavigate })
                     module={selectedReguler}
                     onBack={() => setSelectedReguler(null)}
                     onTabChange={setActiveTab}
+                    onRead={() => setReadingModule(selectedReguler)}
                 />
             </div>
         );
