@@ -70,27 +70,27 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
     const progress = ((currentSlide + 1) / slides.length) * 100;
 
     return (
-        <div className="fixed inset-0 z-[3000] bg-[#060b13] flex flex-col animate-fade-in-reader">
-            {/* Header / Nav Bar (Glassmorphism) */}
-            <div className="h-16 border-b border-white/5 flex items-center justify-between px-6 bg-[#0c1421]/60 backdrop-blur-xl relative z-[3200]">
+        <div className="fixed inset-0 z-[3000] bg-[#f8fafc] flex flex-col animate-fade-in-reader">
+            {/* Header / Nav Bar (Light Glassmorphism) */}
+            <div className="h-16 border-b border-[#e2e8f0] flex items-center justify-between px-6 bg-white/80 backdrop-blur-xl relative z-[3200] shadow-sm">
                 <div className="flex items-center gap-4">
                     <button
                         onClick={onClose}
-                        className="w-10 h-10 flex items-center justify-center hover:bg-white/5 rounded-full transition-all text-white/50 hover:text-white border border-transparent hover:border-white/10"
+                        className="w-10 h-10 flex items-center justify-center hover:bg-gray-100 rounded-full transition-all text-[#64748b] hover:text-[#0070c0] border border-transparent hover:border-gray-200"
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
-                    <div className="w-px h-6 bg-white/10 mx-1 hidden sm:block"></div>
+                    <div className="w-px h-6 bg-gray-200 mx-1 hidden sm:block"></div>
                     <div>
-                        <h2 className="text-white font-bold text-[14px] md:text-[16px] tracking-tight">
+                        <h2 className="text-[#1e293b] font-bold text-[14px] md:text-[16px] tracking-tight">
                             {module.title}
                         </h2>
                         <div className="flex items-center gap-2 mt-0.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#3080E3] animate-pulse"></span>
-                            <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest leading-none">
-                                Slide {currentSlide + 1} of {slides.length}
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#0070c0] animate-pulse"></span>
+                            <p className="text-[#64748b] text-[10px] font-bold uppercase tracking-widest leading-none">
+                                Slide {currentSlide + 1} OF {slides.length}
                             </p>
                         </div>
                     </div>
@@ -98,14 +98,14 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
 
                 <div className="flex items-center gap-4">
                     <div className="hidden md:flex flex-col items-end mr-2">
-                        <span className="text-[10px] text-white/30 font-bold uppercase tracking-widest mb-1">Kemajuan Pelajaran</span>
-                        <div className="w-32 h-1 bg-white/5 rounded-full overflow-hidden">
-                            <div className="h-full bg-[#3080E3] transition-all duration-700 ease-out" style={{ width: `${progress}%` }}></div>
+                        <span className="text-[10px] text-[#94a3b8] font-bold uppercase tracking-widest mb-1">Lesson Progress</span>
+                        <div className="w-32 h-1 bg-gray-200 rounded-full overflow-hidden">
+                            <div className="h-full bg-[#0070c0] transition-all duration-700 ease-out" style={{ width: `${progress}%` }}></div>
                         </div>
                     </div>
                     <button
                         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                        className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all ${isSidebarOpen ? 'bg-[#3080E3] text-white shadow-lg shadow-blue-500/20' : 'bg-white/5 text-white/60 hover:text-white hover:bg-white/10 border border-white/5'}`}
+                        className={`w-10 h-10 flex items-center justify-center rounded-xl transition-all ${isSidebarOpen ? 'bg-[#0070c0] text-white shadow-lg shadow-blue-500/20' : 'bg-gray-50 text-[#64748b] hover:text-[#0070c0] hover:bg-gray-100 border border-gray-100'}`}
                     >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -115,48 +115,48 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
             </div>
 
             {/* Main Content Viewport */}
-            <div className="flex-1 relative flex items-center justify-center p-4 md:p-12 overflow-hidden bg-gradient-to-br from-[#060b13] via-[#0c1421] to-[#060b13]">
-                {/* Dynamic Aura Background */}
-                <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-30">
-                    <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#3080E3]/10 blur-[120px] rounded-full animate-pulse"></div>
-                    <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#3080E3]/5 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="flex-1 relative flex items-center justify-center p-4 md:p-12 overflow-hidden bg-gradient-to-br from-[#f8fafc] via-[#eff6ff] to-[#f8fafc]">
+                {/* Visual Aura Decoration (Soft Blue) */}
+                <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-60">
+                    <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#cfe3ff]/30 blur-[120px] rounded-full animate-pulse"></div>
+                    <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#d9ebff]/30 blur-[120px] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                 </div>
 
-                {/* Slide Card (Premium Style) */}
-                <div className="w-full max-w-6xl aspect-video bg-white rounded-[32px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col md:flex-row animate-slide-in-content relative border border-white/5">
+                {/* Slide Card (Clean White Style) */}
+                <div className="w-full max-w-6xl aspect-video bg-white rounded-[32px] shadow-[0_20px_50px_-15px_rgba(0,112,192,0.15)] overflow-hidden flex flex-col md:flex-row animate-slide-in-content relative border border-gray-100">
 
                     {/* Left: Visual Area */}
-                    <div className="w-full md:w-5/12 h-64 md:h-auto relative overflow-hidden group/img">
+                    <div className="w-full md:w-5/12 h-64 md:h-auto relative overflow-hidden group/img border-r border-gray-50">
                         <img
                             key={`img-${currentSlide}`}
                             src={slides[currentSlide].image}
                             alt={slides[currentSlide].title}
                             className="w-full h-full object-cover transition-transform duration-1000 group-hover/img:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/5 to-black/40 md:bg-gradient-to-l"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent"></div>
 
                         {/* Slide Overlay Info */}
-                        <div className="absolute bottom-0 left-0 w-full p-8 text-white z-10 hidden md:block">
-                            <div className="w-8 h-1 bg-white/80 rounded-full mb-3"></div>
-                            <p className="text-[12px] font-bold opacity-60 uppercase tracking-[0.2em] mb-1">Visual Study</p>
-                            <p className="text-[14px] font-medium text-white/90 italic leading-snug">"{slides[currentSlide].title}"</p>
+                        <div className="absolute bottom-0 left-0 w-full p-8 z-10 hidden md:block">
+                            <div className="w-8 h-1 bg-[#0070c0] rounded-full mb-3 shadow-[0_0_10px_rgba(0,112,192,0.5)]"></div>
+                            <p className="text-[12px] font-bold text-[#0070c0]/60 uppercase tracking-[0.2em] mb-1">Visual Study</p>
+                            <p className="text-[14px] font-medium text-[#1e293b] italic leading-snug">"{slides[currentSlide].title}"</p>
                         </div>
                     </div>
 
-                    {/* Right: Content Area (Clean Typography) */}
+                    {/* Right: Content Area (Elegant Typography) */}
                     <div className="flex-1 p-8 md:p-16 lg:p-20 flex flex-col justify-center bg-white relative">
-                        <div className="absolute top-12 left-12 w-24 h-24 bg-[#3080E3]/3 blur-[40px] rounded-full pointer-events-none"></div>
+                        <div className="absolute top-12 left-12 w-24 h-24 bg-[#0070c0]/5 blur-[40px] rounded-full pointer-events-none"></div>
 
                         <div className="flex items-center gap-3 mb-6">
-                            <span className="w-5 h-[2px] bg-[#3080E3]/30"></span>
-                            <span className="text-[#3080E3] font-bold text-[13px] uppercase tracking-[0.3em]">
-                                Topik {slides[currentSlide].id}
+                            <span className="w-5 h-[2px] bg-[#0070c0]/30 font-bold">——</span>
+                            <span className="text-[#0070c0] font-bold text-[13px] uppercase tracking-[0.3em]">
+                                Topic {slides[currentSlide].id}
                             </span>
                         </div>
 
                         <h1
                             key={`title-${currentSlide}`}
-                            className="text-[32px] md:text-[44px] lg:text-[52px] font-black text-[#0f172a] leading-[1.05] mb-8 animate-slide-up-content tracking-tight"
+                            className="text-[32px] md:text-[44px] lg:text-[52px] font-black text-[#1e293b] leading-[1.05] mb-8 animate-slide-up-content tracking-tight"
                         >
                             {slides[currentSlide].title}
                         </h1>
@@ -171,51 +171,51 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
                         <div className="mt-12 flex items-center gap-6">
                             <div className="flex -space-x-3">
                                 {[1, 2, 3].map(i => (
-                                    <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center overflow-hidden">
-                                        <img src={`https://i.pravatar.cc/100?u=${i}`} alt="user" />
+                                    <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-50 flex items-center justify-center overflow-hidden grayscale opacity-70">
+                                        <img src={`https://i.pravatar.cc/100?u=${i + 10}`} alt="user" />
                                     </div>
                                 ))}
                             </div>
-                            <p className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">Telah dipelajari oleh 1,2k+ UMKM</p>
+                            <p className="text-[11px] text-[#94a3b8] font-bold uppercase tracking-wider">Visited by 1,2k+ participants</p>
                         </div>
                     </div>
 
-                    {/* Quick Nav Floating Overlays */}
+                    {/* Navigation Buttons (White Theme) */}
                     <button
                         onClick={prevSlide}
                         disabled={currentSlide === 0}
-                        className={`absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-black/40 backdrop-blur-md text-white border border-white/10 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 active:scale-90 ${currentSlide === 0 ? 'hidden' : ''}`}
+                        className={`absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-white/90 backdrop-blur-md text-[#1e293b] border border-gray-100 shadow-lg flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 active:scale-90 ${currentSlide === 0 ? 'hidden' : ''}`}
                     >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
                     </button>
                     <button
                         onClick={nextSlide}
                         disabled={currentSlide === slides.length - 1}
-                        className={`absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-[#3080E3] text-white border border-white/20 shadow-xl flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 active:scale-90 ${currentSlide === slides.length - 1 ? 'hidden' : ''}`}
+                        className={`absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-[#0070c0] text-white shadow-xl flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 active:scale-90 ${currentSlide === slides.length - 1 ? 'hidden' : ''}`}
                     >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
                     </button>
                 </div>
             </div>
 
-            {/* Bottom Controls / Progress (Premium Glass) */}
-            <div className="h-24 bg-[#0c1421]/80 backdrop-blur-xl border-t border-white/5 flex items-center justify-between px-10 relative z-[3200]">
+            {/* Bottom Controls / Progress (Light Glass) */}
+            <div className="h-24 bg-white/90 backdrop-blur-xl border-t border-[#e2e8f0] flex items-center justify-between px-10 relative z-[3200]">
                 <div className="flex items-center gap-6">
                     <button
                         onClick={prevSlide}
                         disabled={currentSlide === 0}
-                        className={`group flex items-center gap-2 text-white font-bold text-[14px] px-2 py-2 transition-all ${currentSlide === 0 ? 'opacity-20 cursor-not-allowed' : 'hover:translate-x-[-4px]'}`}
+                        className={`group flex items-center gap-4 text-[#64748b] font-bold text-[14px] px-2 py-2 transition-all ${currentSlide === 0 ? 'opacity-20 cursor-not-allowed' : 'hover:translate-x-[-4px] hover:text-[#0070c0]'}`}
                     >
-                        <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white/5 transition-colors">
+                        <div className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center group-hover:bg-[#0070c0]/5 group-hover:border-[#0070c0]/30 transition-all shadow-sm">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" /></svg>
                         </div>
-                        <span className="hidden sm:inline">Sebelumnya</span>
+                        <span className="hidden sm:inline">Kembali</span>
                     </button>
 
                     <button
                         onClick={nextSlide}
                         disabled={currentSlide === slides.length - 1}
-                        className={`relative overflow-hidden group/btn bg-[#3080E3] text-white flex items-center gap-3 font-bold text-[15px] px-10 py-3.5 rounded-2xl transition-all shadow-[0_15px_30px_-5px_rgba(48,128,227,0.3)] hover:shadow-[0_20px_40px_-5px_rgba(48,128,227,0.4)] hover:-translate-y-0.5 active:scale-95 ${currentSlide === slides.length - 1 ? 'hidden' : ''}`}
+                        className={`relative overflow-hidden group/btn bg-[#0070c0] text-white flex items-center gap-3 font-bold text-[15px] px-10 py-3.5 rounded-2xl transition-all shadow-[0_10px_20px_-5px_rgba(0,112,192,0.4)] hover:shadow-[0_15px_30px_-5px_rgba(0,112,192,0.5)] hover:-translate-y-0.5 active:scale-95 ${currentSlide === slides.length - 1 ? 'hidden' : ''}`}
                     >
                         <span className="relative z-10">Lanjut Materi</span>
                         <svg className="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
@@ -225,7 +225,7 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
                     {currentSlide === slides.length - 1 && (
                         <button
                             onClick={onClose}
-                            className="bg-[#22c55e] hover:bg-[#16a34a] text-white flex items-center gap-3 font-bold text-[15px] px-10 py-3.5 rounded-2xl transition-all shadow-[0_15px_30px_-5px_rgba(34,197,94,0.3)] hover:shadow-[0_20px_40px_-5px_rgba(34,197,94,0.4)] hover:-translate-y-0.5 active:scale-95"
+                            className="bg-[#22c55e] hover:bg-[#16a34a] text-white flex items-center gap-3 font-bold text-[15px] px-10 py-3.5 rounded-2xl transition-all shadow-[0_10px_20px_-5px_rgba(34,197,94,0.4)] hover:shadow-[0_15px_30px_-5px_rgba(34,197,94,0.5)] hover:-translate-y-0.5 active:scale-95"
                         >
                             <span>Selesaikan Belajar</span>
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
@@ -233,21 +233,21 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
                     )}
                 </div>
 
-                {/* Desktop Mini Info */}
+                {/* Desktop Progress Info */}
                 <div className="hidden lg:flex items-center gap-10">
                     <div className="text-right">
-                        <p className="text-white/30 text-[10px] font-bold uppercase tracking-widest mb-1">Status Belajar</p>
-                        <p className="text-[#3080E3] text-[14px] font-black uppercase tracking-tighter">In Progress · {Math.round(progress)}%</p>
+                        <p className="text-[#94a3b8] text-[10px] font-bold uppercase tracking-widest mb-1 font-mono">Learning Progress</p>
+                        <p className="text-[#0070c0] text-[14px] font-black uppercase tracking-tighter">In Review · {Math.round(progress)}%</p>
                     </div>
                 </div>
             </div>
 
-            {/* Sidebar / Slide Navigator Overlay */}
+            {/* Sidebar / Materi Navigator (Light Mode) */}
             {isSidebarOpen && (
-                <div className="absolute top-16 right-0 bottom-0 w-80 bg-[#0c1421]/95 backdrop-blur-2xl border-l border-white/5 z-[3100] shadow-2xl animate-slide-left">
-                    <div className="p-6 border-b border-white/5 flex items-center justify-between">
-                        <h3 className="text-white font-bold text-[15px]">Daftar Materi</h3>
-                        <p className="text-[#3080E3] text-[11px] font-bold uppercase">{slides.length} Slides</p>
+                <div className="absolute top-16 right-0 bottom-0 w-80 bg-white/95 backdrop-blur-2xl border-l border-[#e2e8f0] z-[3100] shadow-[-20px_0_50px_rgba(0,0,0,0.05)] animate-slide-left">
+                    <div className="p-6 border-b border-gray-100 flex items-center justify-between">
+                        <h3 className="text-[#1e293b] font-bold text-[15px]">Daftar Materi</h3>
+                        <p className="text-[#0070c0] text-[11px] font-bold uppercase">{slides.length} Slides</p>
                     </div>
                     <div className="p-4 space-y-3 overflow-y-auto max-h-[calc(100vh-140px)] no-scrollbar">
                         {slides.map((slide, idx) => (
@@ -257,13 +257,13 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
                                     setCurrentSlide(idx);
                                     setIsSidebarOpen(false);
                                 }}
-                                className={`group cursor-pointer p-4 rounded-2xl border transition-all ${currentSlide === idx ? 'bg-[#3080E3] border-[#3080E3] shadow-lg shadow-blue-500/20' : 'bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/20'}`}
+                                className={`group cursor-pointer p-4 rounded-2xl border transition-all ${currentSlide === idx ? 'bg-[#0070c0]/5 border-[#0070c0]/30 shadow-sm' : 'bg-white border-gray-100 hover:bg-gray-50 hover:border-gray-200'}`}
                             >
                                 <div className="flex gap-4 items-center">
-                                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[12px] ${currentSlide === idx ? 'bg-white text-[#3080E3]' : 'bg-white/10 text-white/50 group-hover:text-white'}`}>
+                                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[12px] ${currentSlide === idx ? 'bg-[#0070c0] text-white shadow-md shadow-blue-500/20' : 'bg-gray-100 text-[#94a3b8] group-hover:text-[#64748b]'}`}>
                                         {slide.id}
                                     </div>
-                                    <h4 className={`font-bold text-[13px] ${currentSlide === idx ? 'text-white' : 'text-white/60 group-hover:text-white'} truncate`}>
+                                    <h4 className={`font-bold text-[13px] ${currentSlide === idx ? 'text-[#0070c0]' : 'text-[#64748b] group-hover:text-[#1e293b]'} truncate`}>
                                         {slide.title}
                                     </h4>
                                 </div>
@@ -294,10 +294,6 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
                     from { transform: translateX(100%); }
                     to { transform: translateX(0); }
                 }
-                @keyframes bounce-subtle {
-                    0%, 100% { transform: translateY(0); }
-                    50% { transform: translateY(-5px); }
-                }
                 @keyframes shimmer {
                     from { transform: translateX(-100%); }
                     to { transform: translateX(100%); }
@@ -307,7 +303,6 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
                 .animate-slide-up-content { animation: slide-up-content 0.5s ease-out 0.2s forwards; opacity: 0; }
                 .animate-fade-in-slow { animation: fade-in-slow 1s ease-out forwards; }
                 .animate-slide-left { animation: slide-left 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-                .animate-bounce-subtle { animation: bounce-subtle 2s infinite; }
                 .animate-shimmer { animation: shimmer 2s infinite linear; }
                 
                 .no-scrollbar::-webkit-scrollbar { display: none; }
