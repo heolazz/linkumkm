@@ -239,7 +239,7 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
                     <button
                         onClick={nextSlide}
                         disabled={currentSlide === slides.length - 1}
-                        className={`flex-[2] md:flex-none bg-[#0070c0] text-white flex items-center justify-center gap-3 font-bold text-[14px] md:text-[15px] px-8 h-12 md:h-14 rounded-2xl transition-all shadow-lg shadow-blue-500/10 active:scale-95 ${currentSlide === slides.length - 1 ? 'hidden' : ''}`}
+                        className={`flex-[2] md:flex-none bg-white text-[#0070c0] border-2 border-[#0070c0] flex items-center justify-center gap-3 font-bold text-[14px] md:text-[15px] px-8 h-12 md:h-14 rounded-2xl transition-all shadow-md active:scale-95 ${currentSlide === slides.length - 1 ? 'hidden' : ''}`}
                     >
                         Selanjutnya
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" /></svg>
@@ -248,7 +248,7 @@ const ModuleReader: React.FC<ModuleReaderProps> = ({ module, onClose }) => {
                     {currentSlide === slides.length - 1 && (
                         <button
                             onClick={onClose}
-                            className="flex-[2] md:flex-none bg-[#22c55e] text-white flex items-center justify-center gap-3 font-bold text-[14px] md:text-[15px] px-8 h-12 md:h-14 rounded-2xl shadow-lg shadow-green-500/10 active:scale-95"
+                            className="flex-[2] md:flex-none bg-[#0070c0] text-white flex items-center justify-center gap-3 font-bold text-[14px] md:text-[15px] px-8 h-12 md:h-14 rounded-2xl shadow-lg shadow-blue-500/20 active:scale-95 hover:bg-[#005a9e] transition-all"
                         >
                             <span>Selesaikan</span>
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>

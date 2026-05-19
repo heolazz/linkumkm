@@ -50,6 +50,7 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
     const totalDebit = entries.reduce((sum, item) => sum + item.debit, 0);
     const totalCredit = entries.reduce((sum, item) => sum + item.credit, 0);
     const isBalanced = totalDebit === totalCredit && totalDebit > 0;
+    const difference = totalDebit - totalCredit;
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -86,12 +87,16 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
 
                 <div className="flex-1 overflow-y-auto px-8 py-6 space-y-6 scrollbar-thin scrollbar-thumb-gray-200">
                     {/* Info Message - Reminder */}
-                    <div className="bg-amber-50 border border-amber-100 rounded-2xl p-4 flex items-start gap-3">
-                        <div className="text-amber-600 mt-0.5 shrink-0">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <div className="rounded-2xl p-4 flex items-start gap-3 border" style={{ backgroundColor: 'rgba(49, 127, 227, 0.06)', borderColor: 'rgba(49, 127, 227, 0.15)' }}>
+                        <div className="mt-0.5 shrink-0" style={{ color: '#317FE3' }}>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
                         </div>
-                        <p className="text-[11px] font-medium text-amber-800 leading-relaxed">
-                            Pastikan jurnal penginputan pada Debit dan Kredit sudah <span className="text-amber-900 underline font-bold decoration-2">Balance</span> sebelum Anda klik simpan. Setiap baris hanya boleh berisi nominal Debit atau Kredit, tidak keduanya.
+                        <p className="text-[11px] font-medium leading-relaxed" style={{ color: '#317FE3' }}>
+                            Pastikan jurnal penginputan pada Debit dan Kredit sudah <span className="underline font-bold decoration-2" style={{ textDecorationColor: '#317FE3' }}>Balance</span> sebelum Anda klik simpan. Setiap baris hanya boleh berisi nominal Debit atau Kredit, tidak keduanya.
                         </p>
                     </div>
                     {/* Date & Evidence */}
@@ -215,19 +220,56 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
                                         <td className="px-5 py-4 font-bold text-black text-right text-xs">Rp {totalCredit.toLocaleString('id-ID')}</td>
                                         <td></td>
                                     </tr>
+                                    {totalDebit !== totalCredit && (totalDebit > 0 || totalCredit > 0) && (
+                                        <tr className="border-t border-[#E9EFF5] bg-rose-50/50">
+                                            <td className="px-5 py-3 font-semibold text-rose-600 text-[10px] uppercase">Selisih</td>
+                                            <td colSpan={2} className="px-5 py-3 font-bold text-rose-600 text-right text-xs">
+                                                {difference > 0 
+                                                    ? `+Rp ${difference.toLocaleString('id-ID')}` 
+                                                    : `-Rp ${Math.abs(difference).toLocaleString('id-ID')}`}
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    )}
                                 </tfoot>
                             </table>
                         </div>
 
-                        {/* Info Message */}
-                        <div className="bg-bg-secondary border border-[#E9EFF5] rounded-2xl p-4 flex items-center gap-3">
-                            <div className="text-secondary">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        {/* Info / Alert Message */}
+                        {totalDebit !== totalCredit && (totalDebit > 0 || totalCredit > 0) ? (
+                            <div className="bg-rose-50 border border-rose-100 rounded-2xl p-4 flex items-start gap-3 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                <div className="text-rose-500 mt-0.5 shrink-0">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p className="text-[11px] font-bold text-rose-800">Debit & Kredit Belum Seimbang!</p>
+                                    <p className="text-[10px] font-medium text-rose-700 mt-0.5 leading-relaxed">
+                                        Selisih:{' '}
+                                        <span className="font-bold underline decoration-rose-400">
+                                            {difference > 0 ? `+Rp ${difference.toLocaleString('id-ID')}` : `-Rp ${Math.abs(difference).toLocaleString('id-ID')}`}
+                                        </span>{' '}
+                                        ({difference > 0 ? 'Debit lebih besar' : 'Kredit lebih besar'}). Silakan sesuaikan kembali agar seimbang (balance).
+                                    </p>
+                                </div>
                             </div>
-                            <p className="text-[11px] font-medium text-text-muted">
-                                Masukkan nominal debit dan kredit pada baris akun di atas.
-                            </p>
-                        </div>
+                        ) : (
+                            <div className="rounded-2xl p-4 flex items-center gap-3 border" style={{ backgroundColor: 'rgba(49, 127, 227, 0.06)', borderColor: 'rgba(49, 127, 227, 0.15)' }}>
+                                <div className="shrink-0" style={{ color: '#317FE3' }}>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                    </svg>
+                                </div>
+                                <p className="text-[11px] font-medium" style={{ color: '#317FE3' }}>
+                                    Masukkan nominal debit dan kredit pada baris akun di atas.
+                                </p>
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -241,7 +283,11 @@ const AddJournalModal: React.FC<AddJournalModalProps> = ({ isOpen, onClose, onSa
                             : 'bg-[#E9EFF5] text-text-muted cursor-not-allowed'
                             }`}
                     >
-                        {isBalanced ? 'Simpan Jurnal Umum' : 'Debit & Kredit Belum Seimbang'}
+                        {isBalanced 
+                            ? 'Simpan Jurnal Umum' 
+                            : totalDebit === 0 && totalCredit === 0 
+                                ? 'Debit & Kredit Belum Seimbang' 
+                                : `Belum Seimbang (${difference > 0 ? `+Rp ${difference.toLocaleString('id-ID')}` : `-Rp ${Math.abs(difference).toLocaleString('id-ID')}`})`}
                     </button>
                 </div>
             </div>
